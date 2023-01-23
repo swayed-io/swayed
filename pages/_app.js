@@ -4,6 +4,7 @@ import Head from 'next/head'
 import {AuthProvider} from "../hook/auth";
 import AuthStateChanged from '../components/common/authStateChanged';
 import Layout from '../components/common/layout';
+import React from 'react';
 
 function MyApp({ Component, pageProps }) {
   return (

@@ -1,7 +1,7 @@
 
 
 import React from 'react'
-import { useEffect,useState} from "react";
+// import { useEffect,useState} from "react";
 import {useRouter} from "next/router";
 import { withProtected } from "../../../../hook/route";
 import Dashboard from '../../../../components/admin/respondent/dashboard';

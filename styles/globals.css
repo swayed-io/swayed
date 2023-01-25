@@ -1,17 +1,236 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-
 @layer base {
-    font-face {
-        font-family: 'Manrope';
-        src: url('/font/ManropeRegular.ttf') format('ttf');
-        font-weight: 400;
-        font-display: swap;
-        font-style: normal;
-    }
-    body{
-        font-family: 'Manrope',sans-serif;
-    }
+  font-face {
+    font-family: "Manrope";
+    src: url("/font/ManropeRegular.ttf") format("ttf");
+    font-weight: 400;
+    font-display: swap;
+    font-style: normal;
   }
+
+  body {
+    font-family: "Manrope", sans-serif;
+  }
+
+  .ff-Roboto {
+    font-family: "Roboto", sans-serif;
+  }
+
+  .ff-poppins {
+    font-family: "Poppins", sans-serif;
+  }
+
+  .shadow-how-it-works {
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.25);
+  }
+
+  .footer-gradient {
+    background: conic-gradient(
+      from 211.71deg at 51.13% 74.03%,
+      #967fc2 0deg,
+      #4650ac 360deg
+    );
+  }
+
+  .btn-gradients {
+    background: linear-gradient(45deg, #4e2e99 0%, #4da3f0 100%);
+  }
+
+  .shadow-blue {
+    box-shadow: 0px 10px 20px rgba(43, 84, 228, 0.72);
+  }
+
+  .shadow-inputs {
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  }
+
+  /* .bg-hero-home {
+    background-image: url("/img/hero-bg-image-home.png");
+  }
+
+  .text-shadow-heroheading {
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  } */
+  .text-shadow {
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  }
+}
+
+.btn-bg-gradients {
+  background: linear-gradient(145.73deg, #4dd5f9 20.26%, #807ef7 108.54%);
+  box-shadow: 0px 8px 10px rgba(66, 95, 248, 0.41);
+}
+
+.hero-bg-img {
+  background-image: url("/img/participants-desktop-bg.png");
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.hero-bg-img-earners {
+  background-image: url("/img/earners-bg-image-latest.png");
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+/* @media (max-width: 640px) {
+  .hero-bg-img {
+    background-size: cover;
+    background-position: right;
+    background-repeat: no-repeat;
+  }
+} */
+/* @media (min-width: 1024px) and (max-width: 1200px) {
+  .current-project-bg {
+    background-image: url("/img/projectbg.png");
+    background-size: 100% 100%;
+    background-position: center right -25px;
+    background-repeat: no-repeat;
+  }
+}
+@media (min-width: 1400px) {
+  .current-project-bg {
+    background-size: 100% 100%;
+    background-position: center right -42px;
+    background-repeat: no-repeat;
+  }
+} */
+/* .current-project-bg {
+  background-image: url("/img/projectbg.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+} */
+.bg-project:after {
+  position: absolute;
+  content: "";
+  left: 20px;
+  z-index: 0;
+  top: 0;
+  pointer-events: none !important;
+  width: calc(100% - 20px);
+  height: 100%;
+  background-image: url("/img/projectbg.png");
+  background-size: 100% 100%;
+  background-position: center right;
+  background-repeat: no-repeat;
+}
+
+.bg_monthly:after {
+  position: absolute;
+  content: "";
+  left: 20px;
+  z-index: 0;
+  top: 0;
+  pointer-events: none !important;
+  width: calc(100% - 20px);
+  height: 100%;
+  background-image: url("/img/share-study.png");
+  /* background-image: url("/img/projectbg.png"); */
+  background-size: 100% 100%;
+  background-position: center right;
+  background-repeat: no-repeat;
+}
+
+@media (max-width: 1280px) {
+  .bg-project:after {
+    background-size: cover;
+    left: 0px;
+    width: 100%;
+    background-position: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .bg_monthly:after {
+    background-size: cover;
+    left: 0px;
+    width: 100%;
+    background-position: center;
+    border-radius: 20px;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-bg-img {
+    background-size: 100% 100%;
+    background-position: inherit;
+    background-image: url("/img/participant-page-mobile-bg.png");
+  }
+  .hero-bg-img-earners {
+    background-size: 100% 100%;
+    background-position: inherit;
+    background-image: url("/img/bubble-bgparticipantpage.png");
+  }
+
+  .bg_monthly:after {
+    background-size: cover;
+    left: 0px;
+    width: 100%;
+    background-position: center;
+    background-image: url("/img/share-your-study-withus-bgimage.png");
+  }
+}
+
+.text_shadow {
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.monthly_bg {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.96) 0%,
+    rgba(255, 255, 255, 0.99) 100%
+  );
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+}
+
+.monthly_card {
+  background: linear-gradient(
+    179.97deg,
+    #5d17d1 0.03%,
+    rgba(81, 133, 223, 0.933302) 46.72%,
+    rgba(81, 215, 223, 0.83) 107.97%
+  );
+  box-shadow: 0px 42px 34px rgba(82, 67, 194, 0.295755);
+  border-radius: 26px;
+}
+
+.our_obssesion {
+  background: radial-gradient(
+      188.33% 188.35% at 47.81% 128.64%,
+      #56b8db 0%,
+      #548bdd 47.27%,
+      #5b36d5 84.38%
+    )
+    /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */;
+  box-shadow: 0px 10px 20px rgba(62, 94, 208, 0.25);
+  border-radius: 20px;
+}
+
+.box_shadow_faq {
+  box-shadow: 0px 10px 20px 0px #a8a7de;
+  border-radius: 30px;
+}
+.your_study {
+  background: -webkit-linear-gradient(#4e51b3, #4d7bd3);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.bg-earner-img {
+  background: linear-gradient(
+    235.16deg,
+    #373ba2 3.83%,
+    rgba(61, 73, 175, 0.92) 96.86%
+  );
+  opacity: 0.5;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5);
+  border-radius: 40px;
+}

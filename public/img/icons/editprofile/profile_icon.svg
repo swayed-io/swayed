@@ -7,12 +7,12 @@
 <rect x="61" y="59" width="28" height="28" rx="14" stroke="white" stroke-width="2"/>
 <defs>
 <linearGradient id="paint0_linear_69_3" x1="2.98023e-06" y1="42.4735" x2="35.1828" y2="-23.7943" gradientUnits="userSpaceOnUse">
-<stop stop-color="#4E2E99"/>
-<stop offset="1" stop-color="#4DA3F0"/>
+<stop stopColor="#4E2E99"/>
+<stop offset="1" stopColor="#4DA3F0"/>
 </linearGradient>
 <linearGradient id="paint1_linear_69_3" x1="20.2344" y1="64.8547" x2="30.6794" y2="44.4858" gradientUnits="userSpaceOnUse">
-<stop stop-color="#4E2E99"/>
-<stop offset="1" stop-color="#4DA3F0"/>
+<stop stopColor="#4E2E99"/>
+<stop offset="1" stopColor="#4DA3F0"/>
 </linearGradient>
 </defs>
 </svg>

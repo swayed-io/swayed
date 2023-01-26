@@ -461,10 +461,6 @@ export default function Dashboard() {
               </p>
             </div>
             <div className="flex flex-row space-x-2 sm:hidden visible sm:mt-0 mt-2">
-              {/* <button className="rounded-full bg-background-100 text-center py-2 sm:px-4 px-2 items-center font-medium text-xs  bg-opacity-10 flex flex-row">
-                <img src="/img/microfone_icon.svg" />
-                1-on-1 Interview
-              </button> */}
               <button className="rounded-full bg-background-100 text-center py-2 sm:px-4 px-2 items-center font-medium text-xs  bg-opacity-10 flex flex-row">
                 <img src="/img/world_icon.svg" />
                 Online

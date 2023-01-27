@@ -43,7 +43,9 @@ function DashboardPage() {
     );
   }
   if (router.asPath.includes("/admin/respondent/dashboard#changepassword")) {
-    return <div className="p-4 ">{<ChangePassword />}</div>;
+    return (
+      <div className="p-4 ">{<ChangePassword authService={AuthService} />}</div>
+    );
   }
   if (router.asPath.includes("/admin/respondent/dashboard#socialaccounts")) {
     return <div className="p-4 ">{<SocialA authService={AuthService} />}</div>;

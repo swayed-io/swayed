@@ -1,3 +1,4 @@
+import Link from "next/link";
 export default function EditProfile({ authService }) {
   const user = authService.getUser();
   return (
@@ -43,13 +44,15 @@ export default function EditProfile({ authService }) {
               src="/img/icons/editprofile/social_icon.svg"
               className="mx-auto w-8"
             />
-            <div className="text-center">
-              <p className="text-lg font-semibold mt-2">Social Media</p>
-              <p className="text-base font-medium opacity-60 mt-2">
-                Help researchers verify your identity & increase your selection
-                chances.
-              </p>
-            </div>
+            <Link href="/admin/respondent/dashboard#socialaccounts">
+              <div className="text-center">
+                <p className="text-lg font-semibold mt-2">Social Media</p>
+                <p className="text-base font-medium opacity-60 mt-2">
+                  Help researchers verify your identity & increase your
+                  selection chances.
+                </p>
+              </div>
+            </Link>
           </div>
           <div className="bg-background-100 p-4 flex flex-col rounded-md hover:text-secondary-100 cursor-pointer">
             <img

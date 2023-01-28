@@ -1,6 +1,13 @@
 import cogoToast from "cogo-toast";
-import React from "react";
-export default function PersonalForm({ page, setPage, formData, setFormData }) {
+import React, { useState } from "react";
+export default function PersonalForm({
+  page,
+  setPage,
+  formData,
+  setFormData,
+  saveinfo,
+}) {
+  const [disable, setDisable] = useState(false);
   const [validation, setValidation] = React.useState({
     birth: "",
     city: "",
@@ -613,22 +620,15 @@ export default function PersonalForm({ page, setPage, formData, setFormData }) {
               }
 
               if (validate) {
-                setPage(page + 1);
+                saveinfo(formData);
+                setDisable(false);
               } else {
                 cogoToast.warn(message);
                 validate = true;
               }
             }}
           >
-            Next
-          </button>
-          <button
-            className="block w-full border-2 border-gray-200 rounded-lg bg-white px-5 py-3 transition ease-in-out delay-150 active:bg-green-500  hover:-translate-y-1 hover:scale-110 text-sm font-semibold text-black   disabled:opacity-50"
-            onClick={() => {
-              setPage(page - 1);
-            }}
-          >
-            Back
+            Save
           </button>
         </div>
       </div>

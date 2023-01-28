@@ -1,11 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
+import cogoToast from "cogo-toast";
 
-export default function WorkForm({ page, setPage, formData, setFormData }) {
+export default function WorkForm({
+  page,
+  setPage,
+  formData,
+  setFormData,
+  saveinfo,
+}) {
   const [form, setForm] = React.useState({
     visibleR: "hidden",
     visibleG: "hidden",
     visibleB: "hidden",
   });
+  const [disable, setDisable] = useState(false);
 
   const MyCheckBoxList = [
     {
@@ -1683,18 +1691,11 @@ export default function WorkForm({ page, setPage, formData, setFormData }) {
           <button
             className="block w-full rounded-lg bg-secondary-100 px-5 py-3 transition ease-in-out delay-150 active:bg-green-500  hover:-translate-y-1 hover:scale-110 text-sm font-semibold text-white   disabled:opacity-50"
             onClick={() => {
-              setPage(page + 1);
+              saveinfo(formData);
+              setDisable(false);
             }}
           >
-            Next
-          </button>
-          <button
-            className="block w-full border-2 border-gray-200 rounded-lg bg-white px-5 py-3 transition ease-in-out delay-150 active:bg-green-500  hover:-translate-y-1 hover:scale-110 text-sm font-semibold text-black   disabled:opacity-50"
-            onClick={() => {
-              setPage(page - 1);
-            }}
-          >
-            Back
+            Save
           </button>
         </div>
       </div>

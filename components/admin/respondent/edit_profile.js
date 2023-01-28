@@ -19,25 +19,39 @@ export default function EditProfile({ authService }) {
               src="/img/icons/editprofile/contact_icon.svg"
               className="mx-auto w-8"
             />
-            <div className="text-center">
-              <p className="text-lg font-semibold mt-2">Contact Details</p>
-              <p className="text-base font-medium opacity-60 mt-2">
-                Basic information about you and how to best reach you.
-              </p>
-            </div>
+            <Link
+              href={{
+                pathname: "/admin/respondent/onboard-edit",
+                query: { pageQuery: 0 },
+              }}
+            >
+              <div className="text-center">
+                <p className="text-lg font-semibold mt-2">Contact Details</p>
+                <p className="text-base font-medium opacity-60 mt-2">
+                  Basic information about you and how to best reach you.
+                </p>
+              </div>
+            </Link>
           </div>
           <div className="bg-background-100 p-4 flex flex-col rounded-md hover:text-secondary-100 cursor-pointer">
             <img
               src="/img/icons/editprofile/demo_icon.svg"
               className="mx-auto w-8"
             />
-            <div className="text-center">
-              <p className="text-lg font-semibold mt-2">Demographics</p>
-              <p className="text-base font-medium opacity-60 mt-2">
-                Review your gender, ethnicity, education, and income
-                information.
-              </p>
-            </div>
+            <Link
+              href={{
+                pathname: "/admin/respondent/onboard-edit",
+                query: { pageQuery: 2 },
+              }}
+            >
+              <div className="text-center">
+                <p className="text-lg font-semibold mt-2">Demographics</p>
+                <p className="text-base font-medium opacity-60 mt-2">
+                  Review your gender, ethnicity, education, and income
+                  information.
+                </p>
+              </div>
+            </Link>
           </div>
           <div className="bg-background-100 p-4 flex flex-col rounded-md hover:text-secondary-100 cursor-pointer">
             <img
@@ -59,24 +73,39 @@ export default function EditProfile({ authService }) {
               src="/img/icons/editprofile/employment_icon.svg"
               className="mx-auto w-8"
             />
-            <div className="text-center">
-              <p className="text-lg font-semibold mt-2">Employement</p>
-              <p className="text-base font-medium opacity-60 mt-2">
-                Details around your professional work experience.
-              </p>
-            </div>
+            <Link
+              href={{
+                pathname: "/admin/respondent/onboard-edit",
+                query: { pageQuery: 1 },
+              }}
+            >
+              <div className="text-center">
+                <p className="text-lg font-semibold mt-2">Employement</p>
+                <p className="text-base font-medium opacity-60 mt-2">
+                  Details around your professional work experience.
+                </p>
+              </div>
+            </Link>
           </div>
           <div className="bg-background-100 p-4 flex flex-col rounded-md hover:text-secondary-100 cursor-pointer">
             <img
               src="/img/icons/editprofile/skills_icon.svg"
               className="mx-auto w-8"
             />
-            <div className="text-center">
-              <p className="text-lg font-semibold mt-2">Skills</p>
-              <p className="text-base font-medium opacity-60 mt-2">
-                Show off your expertise in specific skills, tools, or software.
-              </p>
-            </div>
+            <Link
+              href={{
+                pathname: "/admin/respondent/onboard-edit",
+                query: { pageQuery: 0 },
+              }}
+            >
+              <div className="text-center">
+                <p className="text-lg font-semibold mt-2">Skills</p>
+                <p className="text-base font-medium opacity-60 mt-2">
+                  Show off your expertise in specific skills, tools, or
+                  software.
+                </p>
+              </div>
+            </Link>
           </div>
           <div className="bg-background-100 p-4 flex flex-col rounded-md hover:text-secondary-100 cursor-pointer">
             <img

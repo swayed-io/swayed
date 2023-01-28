@@ -1,19 +1,30 @@
-import Onboard from "../../../components/onboarding/onboard";
-import BasicForm from "../../../components/onboarding/basicform";
-import WorkForm from "../../../components/onboarding/workform";
-import PersonalForm from "../../../components/onboarding/personalform";
-import TechnicalForm from "../../../components/onboarding/technicalform";
-import { useState } from "react";
-import { saveParticipant } from "../../../lib/data";
+import Onboard from "../../../components/edit/onboard";
+import BasicForm from "../../../components/edit/basicform";
+import WorkForm from "../../../components/edit/workform";
+import PersonalForm from "../../../components/edit/personalform";
+import TechnicalForm from "../../../components/edit/technicalform";
+import { useState, useEffect } from "react";
+import { updateParticipant, getParticipantsByUserID } from "../../../lib/data";
 
 import { withProtected } from "../../../hook/route";
 
 import { getAuth } from "firebase/auth";
+import { useRouter } from "next/router";
 
 function OnboardPage({ auth }) {
+  const router = useRouter();
+  const { pageQuery } = router.query;
   let au = getAuth();
   let user = au.currentUser;
-
+  useEffect(() => {
+    (async () => {
+      const participant = await getParticipantsByUserID(user.uid);
+      setFormData(participant);
+    })();
+    return () => {
+      console.log("cleaning up");
+    };
+  }, [user.uid]);
   const [formData, setFormData] = useState({
     created: new Date().toLocaleString(),
     userId: user?.uid,
@@ -39,7 +50,7 @@ function OnboardPage({ auth }) {
     interests: [],
   });
 
-  const [page, setPage] = useState(0);
+  const [page, setPage] = useState(pageQuery);
   const componentList = [
     <BasicForm
       page={page}
@@ -47,6 +58,7 @@ function OnboardPage({ auth }) {
       setPage={setPage}
       formData={formData}
       setFormData={setFormData}
+      saveinfo={updateParticipant}
     />,
     <WorkForm
       page={page}
@@ -54,6 +66,7 @@ function OnboardPage({ auth }) {
       setPage={setPage}
       formData={formData}
       setFormData={setFormData}
+      saveinfo={updateParticipant}
     />,
     <PersonalForm
       page={page}
@@ -61,6 +74,7 @@ function OnboardPage({ auth }) {
       setPage={setPage}
       formData={formData}
       setFormData={setFormData}
+      saveinfo={updateParticipant}
     />,
     <TechnicalForm
       page={page}
@@ -68,7 +82,7 @@ function OnboardPage({ auth }) {
       setPage={setPage}
       formData={formData}
       setFormData={setFormData}
-      saveinfo={saveParticipant}
+      saveinfo={updateParticipant}
     />,
   ];
 

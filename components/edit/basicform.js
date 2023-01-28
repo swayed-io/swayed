@@ -1,6 +1,13 @@
 import cogoToast from "cogo-toast";
-import React from "react";
-export default function BasicForm({ page, setPage, formData, setFormData }) {
+import React, { useState } from "react";
+export default function BasicForm({
+  page,
+  setPage,
+  formData,
+  setFormData,
+  saveinfo,
+}) {
+  const [disable, setDisable] = useState(false);
   const [validation, setValidation] = React.useState({
     fullname: "",
     lastname: "",
@@ -1009,14 +1016,15 @@ export default function BasicForm({ page, setPage, formData, setFormData }) {
 
               if (validate) {
                 setFormData({ ...formData, interests: filterinterest });
-                setPage(page + 1);
+                saveinfo(formData);
+                setDisable(false);
               } else {
                 cogoToast.warn(message);
                 validate = true;
               }
             }}
           >
-            Next
+            Save
           </button>
         </div>
       </div>

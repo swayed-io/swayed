@@ -22,7 +22,7 @@ export default function SocialA({ authService }) {
             </div>
             <div className="ml-4">
               <p className="text-base font-semibold">Linked in</p>
-              {socialNetwork.password ? (
+              {socialNetwork.linkedin ? (
                 <p className="text-base font-medium opacity-60">
                   Your LinkedIn account is connected to swayed
                 </p>
@@ -39,7 +39,10 @@ export default function SocialA({ authService }) {
                 Connected
               </button>
             ) : (
-              <button className="text-sm font-medium bg-secondary-100 text-white rounded-full px-4 py-2 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 ">
+              <button
+                onClick={() => authService.linkWithLinkedin()}
+                className="text-sm font-medium bg-secondary-100 text-white rounded-full px-4 py-2 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 "
+              >
                 Connect Account
               </button>
             )}
@@ -70,7 +73,7 @@ export default function SocialA({ authService }) {
               </button>
             ) : (
               <button
-                onClick={() => authService.loginWithFacebook()}
+                onClick={() => authService.linkWithFacebook()}
                 className="text-sm font-medium bg-secondary-100 text-white rounded-full px-4 py-2 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 "
               >
                 Connect Account

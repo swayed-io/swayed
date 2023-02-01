@@ -261,7 +261,7 @@ export default function Dashboard() {
                       STUDY DATES
                     </p>
                     <p className="mt-2 text-sm text-black font-medium text-opacity-75">
-                      10/10/2022 - 11/13/2022
+                      {p.published} - {p.expires}
                     </p>
                   </div>
                 </div>

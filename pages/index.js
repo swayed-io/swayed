@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 const HomePage = () => {
-  return <>HomePage</>;
+  return <div id="cool">HomePage</div>;
 };
 
 export default HomePage;

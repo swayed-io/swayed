@@ -1,7 +1,6 @@
 import cogoToast from "cogo-toast";
 import React from "react";
 const PersonalInfoForm = ({ page, setPage, formData, setFormData }) => {
-  const [isRemote, setIsRemote] = React.useState("hidden");
   const [validation, setValidation] = React.useState({
     email: "",
     first_name: "",
@@ -39,6 +38,7 @@ const PersonalInfoForm = ({ page, setPage, formData, setFormData }) => {
                 type="email"
                 id="email"
                 name="email"
+                value={formData.email}
                 onChange={(e) =>
                   setFormData({ ...formData, email: e.target.value })
                 }
@@ -60,6 +60,7 @@ const PersonalInfoForm = ({ page, setPage, formData, setFormData }) => {
                 type="email"
                 id="email"
                 name="email"
+                value={formData.first_name}
                 onChange={(e) =>
                   setFormData({ ...formData, first_name: e.target.value })
                 }
@@ -81,6 +82,7 @@ const PersonalInfoForm = ({ page, setPage, formData, setFormData }) => {
                 type="text"
                 id="last_name"
                 name="last_name"
+                value={formData.last_name}
                 onChange={(e) =>
                   setFormData({ ...formData, last_name: e.target.value })
                 }
@@ -99,27 +101,27 @@ const PersonalInfoForm = ({ page, setPage, formData, setFormData }) => {
 
             <div className="relative mt-1">
               <select
-                id=""
-                name=""
+                id="research_method"
+                name="research_method"
                 value={formData.research_method}
                 onChange={(e) => {
-                  if (e.target.value === "In person") {
-                    setIsRemote("");
-                  } else {
-                    setIsRemote("hidden");
-                  }
+                  // if (e.target.value === "In person") {
+                  //   setIsRemote("");
+                  // } else {
+                  //   setIsRemote("hidden");
+                  // }
                   setFormData({ ...formData, research_method: e.target.value });
                 }}
                 className={`block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 ${validation.gender}`}
               >
-                <option value="">Select...</option>
-                <option value="In person">In person</option>
-                <option value="Remote">Remote</option>
+                <option value="" selected={formData.research_method === ""}>Select...</option>
+                <option value="In person" selected={formData.research_method === "In person"}>In person</option>
+                <option value="Remote" selected={formData.research_method === "Remote"}>Remote</option>
               </select>
             </div>
           </div>
           {/* city */}
-          <div className={isRemote}>
+          <div className={formData.research_method === "In person" ? "" : "hidden"}>
             <label
               htmlFor="city"
               className="sm:text-lg text-md font-normal text-[#413F9D]"
@@ -132,6 +134,7 @@ const PersonalInfoForm = ({ page, setPage, formData, setFormData }) => {
                 type="text"
                 id="city"
                 name="city"
+                value={formData.city}
                 onChange={(e) =>
                   setFormData({ ...formData, city: e.target.value })
                 }
@@ -140,7 +143,7 @@ const PersonalInfoForm = ({ page, setPage, formData, setFormData }) => {
             </div>
           </div>
           {/* State */}
-          <div className={isRemote}>
+          <div className={formData.research_method === "In person" ? "" : "hidden"}>
             <label
               htmlFor="state"
               className="sm:text-lg text-md font-normal text-[#413F9D]"
@@ -153,6 +156,7 @@ const PersonalInfoForm = ({ page, setPage, formData, setFormData }) => {
                 type="text"
                 id="state"
                 name="state"
+                value={formData.state}
                 onChange={(e) =>
                   setFormData({ ...formData, state: e.target.value })
                 }

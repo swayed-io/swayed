@@ -59,7 +59,7 @@ export default function Signup({ signup, auth }) {
     <div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8 ">
       <div className="mx-auto max-w-lg">
         <h1 className="text-center text-2xl font-bold text-[#413F9D] sm:text-3xl">
-          Start earning today!
+          Start Earning Today!
         </h1>
         <h3 className="text-center text-xl font-semibold text-black sm:text-2xl"></h3>
         <div className={`mt-6 mb-0 space-y-4 rounded-lg p-8  ${form.visible}`}>
@@ -83,9 +83,7 @@ export default function Signup({ signup, auth }) {
           </div>
         </div>
 
-        <div
-          className={`mt-6 mb-0 space-y-4 rounded-lg p-8 shadow-2xl ${form.invisible}`}
-        >
+        <div className={`mt-6 mb-0 space-y-4 rounded-lg p-8 shadow-2xl ${form.invisible}`}>
           <p className="text-2xl font-medium text-[#413F9D]">Sign up Now!</p>
 
           <div>

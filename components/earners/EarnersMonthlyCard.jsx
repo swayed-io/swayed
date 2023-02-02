@@ -14,7 +14,7 @@ const EarnersMonthlyCard = ({ item }) => {
             </button>
           </div>
           <p className="text-white font-bold mt-[15px] ff-poppins items-center flex text-center justify-center text-[36px]  ">
-            {item.price}
+            ${item.price}
             <span className="font-medium text-[17px] ff-roboto ">/month</span>
           </p>
           <p className="text-[20px] mt-[13px] text_shadow text-[#F8F3F3] text-center font-medium ff-poppins text-shadow">
@@ -35,14 +35,14 @@ const EarnersMonthlyCard = ({ item }) => {
           </div>
         </div>
         <div className="flex justify-center mt-[16px] ">
-          <Link href="/share">
+          <Link href={{ pathname: "/share", query: { plan_cost: item.price } }}>
             <button className="text-[#312ECF] text-[15px] font-medium bg-white rounded-[24px] h-[44px] w-[232px] ff-poppins transition-all duration-300 ease-in-out hover:-translate-y-1  ">
               Get Started Now
             </button>
           </Link>
         </div>
       </div>
-    </div>
+    </div >
   );
 };
 

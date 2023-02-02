@@ -24,7 +24,7 @@ export default function Share() {
     plan_cost: "",
     payment_method: "",
   });
-  const [page, setPage] = useState(2);
+  const [page, setPage] = useState(0);
   const componentList = [
     <PersonalInfoForm
       page={page}

@@ -86,7 +86,7 @@ export const participantsdata = [
 export const monthlyCard = [
   {
     premium: "PROMOTED",
-    price: "$35",
+    price: 35,
     day: "7-day promoted listing",
     list: [
       {
@@ -109,7 +109,7 @@ export const monthlyCard = [
   },
   {
     premium: "PREMIUM",
-    price: "$99",
+    price: 99,
     day: "30-day promoted listing",
     list: [
       {

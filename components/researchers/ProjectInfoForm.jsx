@@ -41,6 +41,7 @@ const ProjectInfoForm = ({ page, setPage, formData, setFormData }) => {
                 type="text"
                 id="project_title"
                 name="project_title"
+                value={formData.project_title}
                 onChange={(e) =>
                   setFormData({ ...formData, project_title: e.target.value })
                 }
@@ -61,6 +62,7 @@ const ProjectInfoForm = ({ page, setPage, formData, setFormData }) => {
               <textarea
                 id="project_description"
                 name="project_description"
+                value={formData.project_description}
                 onChange={(e) =>
                   setFormData({
                     ...formData,
@@ -110,9 +112,10 @@ const ProjectInfoForm = ({ page, setPage, formData, setFormData }) => {
 
             <div className="relative mt-1">
               <input
-                type="text"
+                type="number"
                 id="payout"
                 name="payout"
+                value={formData.payout}
                 onChange={(e) =>
                   setFormData({ ...formData, payout: e.target.value })
                 }
@@ -134,6 +137,7 @@ const ProjectInfoForm = ({ page, setPage, formData, setFormData }) => {
                 type="number"
                 id="age"
                 name="age"
+                value={formData.age}
                 onChange={(e) =>
                   setFormData({ ...formData, age: e.target.value })
                 }
@@ -152,14 +156,59 @@ const ProjectInfoForm = ({ page, setPage, formData, setFormData }) => {
 
             <div className="relative mt-1">
               <input
-                type="text"
+                type="url"
                 id="registration_url"
                 name="registration_url"
+                value={formData.registration_url}
                 onChange={(e) =>
                   setFormData({ ...formData, registration_url: e.target.value })
                 }
                 className={`w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm ${validation.registration_url}`}
               />
+            </div>
+            {/* Resgistration url */}
+            <div>
+              <label
+                htmlFor="published_on"
+                className="sm:text-lg text-md font-normal text-[#413F9D]"
+              >
+                Publish On <span className="text-red-600">*</span>
+              </label>
+
+              <div className="relative mt-1">
+                <input
+                  type="date"
+                  id="published_on"
+                  name="published_on"
+                  value={formData.published_on}
+                  onChange={(e) =>
+                    setFormData({ ...formData, published_on: e.target.value })
+                  }
+                  className={`w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm ${validation.published_on}`}
+                />
+              </div>
+            </div>
+            {/* expires_on */}
+            <div>
+              <label
+                htmlFor="registration_url"
+                className="sm:text-lg text-md font-normal text-[#413F9D]"
+              >
+                Exprie On <span className="text-red-600">*</span>
+              </label>
+
+              <div className="relative mt-1">
+                <input
+                  type="date"
+                  id="expires_on"
+                  name="expires_on"
+                  value={formData.expires_on}
+                  onChange={(e) =>
+                    setFormData({ ...formData, expires_on: e.target.value })
+                  }
+                  className={`w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm ${validation.expires_on}`}
+                />
+              </div>
             </div>
           </div>
           <button
@@ -173,6 +222,22 @@ const ProjectInfoForm = ({ page, setPage, formData, setFormData }) => {
                 validate = false;
                 setValidation({
                   registration_url:
+                    "disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none invalid:border-pink-500 invalid:text-pink-600 focus:invalid:border-pink-500 focus:invalid:ring-pink-500",
+                });
+              }
+              if (formData.published_on === "") {
+                message = "Please set your publish on date";
+                validate = false;
+                setValidation({
+                  published_on:
+                    "disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none invalid:border-pink-500 invalid:text-pink-600 focus:invalid:border-pink-500 focus:invalid:ring-pink-500",
+                });
+              }
+              if (formData.expires_on === "") {
+                message = "Please set your expire on date";
+                validate = false;
+                setValidation({
+                  expires_on:
                     "disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none invalid:border-pink-500 invalid:text-pink-600 focus:invalid:border-pink-500 focus:invalid:ring-pink-500",
                 });
               }

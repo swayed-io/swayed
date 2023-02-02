@@ -1,5 +1,6 @@
 import React from "react";
 import cogoToast from "cogo-toast";
+import { useRouter } from "next/router";
 const PaymentInfoForm = ({
   page,
   setPage,
@@ -7,10 +8,12 @@ const PaymentInfoForm = ({
   setFormData,
   saveShareProject,
 }) => {
+  const router = useRouter();
+  const plan_cost = router.query.plan_cost
   const [disable, setDisable] = React.useState(false);
   const [validation, setValidation] = React.useState({
     payment_method: "",
-    plan_cost: "34",
+    plan_cost: "",
   });
   return (
     <div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8 ">
@@ -21,7 +24,7 @@ const PaymentInfoForm = ({
       </div>
       <div className="mx-auto max-w-lg py-4">
         <h2 className="text-center text-xl font-bold">Total cost</h2>
-        <p className="text-center text-2xl text-gray-600">53$</p>
+        <p className="text-center text-2xl text-gray-600">{plan_cost}$</p>
       </div>
       <div className="flex justify-around mx-auto  shadow-md border-1 rounded-md w-1/2  py-2">
         <div className="flex-col">
@@ -32,9 +35,10 @@ const PaymentInfoForm = ({
               type="radio"
               name="payment_method"
               value="credit card"
+              checked={formData.payment_method === "credit card"}
               onChange={(e) => {
                 if (e.target.checked) {
-                  setFormData({ ...formData, payment_method: e.target.value });
+                  setFormData({ ...formData, payment_method: e.target.value, plan_cost: parseInt(plan_cost) });
                 }
               }}
             />
@@ -48,9 +52,10 @@ const PaymentInfoForm = ({
               type="radio"
               name="payment_method"
               value="paypal"
+              checked={formData.payment_method === "paypal"}
               onChange={(e) => {
                 if (e.target.checked) {
-                  setFormData({ ...formData, payment_method: e.target.value });
+                  setFormData({ ...formData, payment_method: e.target.value, plan_cost: parseInt(plan_cost) });
                 }
               }}
             />
@@ -68,6 +73,14 @@ const PaymentInfoForm = ({
               validate = false;
               setValidation({
                 payment_method:
+                  "disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none invalid:border-pink-500 invalid:text-pink-600 focus:invalid:border-pink-500 focus:invalid:ring-pink-500",
+              });
+            }
+            if (isNaN(formData.plan_cost)) {
+              message = "Error in plan cost";
+              validate = false;
+              setValidation({
+                plan_cost:
                   "disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none invalid:border-pink-500 invalid:text-pink-600 focus:invalid:border-pink-500 focus:invalid:ring-pink-500",
               });
             }

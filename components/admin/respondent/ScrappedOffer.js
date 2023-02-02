@@ -27,8 +27,8 @@ function ScrappedOffer({ offer }) {
                 <div className="w-full sm:mt-2 mt-4">
                     {
                         showMore
-                            ? <p className="ml-2 text-sm text-medium text-black sm:leading-relaxed">{offer.description.substring(0, 250)} < span className='text-blue-500' onClick={() => setShowMore(!showMore)}>{showMore ? "Show more" : "Show less"}</span></p>
-                            : <p className="ml-2 text-sm text-medium text-black sm:leading-relaxed">{offer.description} < span className='text-blue-500' onClick={() => setShowMore(!showMore)}>{showMore ? "Show more" : "Show less"}</span></p>
+                            ? <p className="ml-2 text-sm text-medium text-black sm:leading-relaxed">{offer.description.substring(0, 250)} {offer.description?.length > 250 && < span className='text-blue-500' onClick={() => setShowMore(!showMore)}>{showMore ? "Show more" : "Show less"}</span>}</p>
+                            : <p className="ml-2 text-sm text-medium text-black sm:leading-relaxed">{offer.description} {offer.description?.length > 250 && < span className='text-blue-500' onClick={() => setShowMore(!showMore)}>{showMore ? "Show more" : "Show less"}</span>}</p>
                     }
 
 
@@ -43,8 +43,7 @@ function ScrappedOffer({ offer }) {
                     <div className="flex sm:flex-row flex-col space-x-2">
                         <div>
                             <p className="font-medium text-black text-opacity-60 text-sm">GENDER AND AGE REQUIREMENTS</p>
-                            <p className="mt-2 text-sm text-black font-medium text-opacity-75">{offer.gender} with
-                                {offer.age} years</p>
+                            <p className="mt-2 text-sm text-black font-medium text-opacity-75">{offer.gender} with {offer.age} years</p>
                         </div>
                         <div>
                             <p className="font-medium text-black text-opacity-60 text-sm">STUDY DATES</p>

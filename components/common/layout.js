@@ -18,14 +18,14 @@ function Layout(props) {
     );
   } else if (router.pathname.includes("/admin/respondent/dashboard")) {
     return (
-      <div className="bg-background-100">
+      <div className="bg-background-100 w-full">
         <div className="flex flex-row">
-          <div className="w-1/4 h-screen ">
+          <div className="w-1/4 h-screen sticky top-0">
             <Navbar />
           </div>
           <div className="w-full">
             <HeaderParticipant />
-            <main className=" overflow-y-auto h-screen">{props.children}</main>
+            <main className="overflow-y-hidden">{props.children}</main>
           </div>
           <div></div>
         </div>

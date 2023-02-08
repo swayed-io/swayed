@@ -1,4 +1,5 @@
 import cogoToast from "cogo-toast";
+import Router from "next/router";
 import React from "react";
 const PersonalInfoForm = ({ page, setPage, formData, setFormData }) => {
   const [validation, setValidation] = React.useState({
@@ -238,7 +239,8 @@ const PersonalInfoForm = ({ page, setPage, formData, setFormData }) => {
           <button
             className="block w-full border-2 border-gray-200 rounded-lg bg-white px-5 py-3 transition ease-in-out delay-150 active:bg-green-500  hover:-translate-y-1 hover:scale-110 text-sm font-semibold text-black   disabled:opacity-50"
             onClick={() => {
-              setPage(page - 1);
+              // setPage(page - 1);
+              Router.back();
             }}
           >
             Back

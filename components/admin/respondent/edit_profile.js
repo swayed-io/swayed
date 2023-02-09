@@ -110,6 +110,27 @@ export default function EditProfile({ authService }) {
           </div>
           <div className="bg-background-100 p-4 flex flex-col rounded-md hover:text-secondary-100 cursor-pointer">
             <img
+              src="/img/icons/editprofile/interests_icon.svg"
+              className="mx-auto w-8"
+            />
+            <Link
+              href={{
+                pathname: "/admin/respondent/onboard-edit",
+                query: { pageQuery: 0 },
+                // hash: 'interests'
+              }}
+            >
+              <div className="text-center">
+                <p className="text-lg font-semibold mt-2">Interests</p>
+                <p className="text-base font-medium opacity-60 mt-2">
+                  Get the best offers you want
+                  That goes in par with your interest.
+                </p>
+              </div>
+            </Link>
+          </div>
+          {/* <div className="bg-background-100 p-4 flex flex-col rounded-md hover:text-secondary-100 cursor-pointer">
+            <img
               src="/img/icons/editprofile/video_icon.svg"
               className="mx-auto w-8"
             />
@@ -119,7 +140,7 @@ export default function EditProfile({ authService }) {
                 Stand out by adding a video introduction to your profile.
               </p>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

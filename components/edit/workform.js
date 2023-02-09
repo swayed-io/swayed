@@ -81,6 +81,7 @@ export default function WorkForm({
     },
   ];
 
+
   const handleChangeInfo = (e) => {
     setFormData({ ...formData, employment_status: e.target.value });
     if (e.target.value === "Full-time employed") {
@@ -116,6 +117,8 @@ export default function WorkForm({
       setForm({ visibleR: "hidden", visibleB: "hidden", visibleG: "hidden" });
     }
   };
+
+  console.log(formData)
 
   return (
     <div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8 ">
@@ -286,7 +289,7 @@ export default function WorkForm({
             </div>
           </div>
           <div className="container sm:mt-4 mt-2 ">
-            <div className={` ${form.visibleR}`}>
+            <div className={["Part-time employed", "Full-time employed"].includes(formData.employment_status) ? "" : "hidden"}>
               <div>
                 <p className="sm:text-2xl text-xl font-medium text-[#413F9D]">
                   Professional details
@@ -664,7 +667,7 @@ export default function WorkForm({
                 </div>
               </div>
             </div>
-            <div className={` ${form.visibleG}`}>
+            <div className={formData.employment_status === "Freelancer" ? "" : "hidden"}>
               <div>
                 <p className="sm:text-2xl text-xl font-medium text-[#413F9D]">
                   Professional details
@@ -688,6 +691,7 @@ export default function WorkForm({
                     }
                     className="form-radio border-primary-100 border-2"
                     value="Just started"
+                    checked={formData.work_as_freelancer === "Just started"}
                   />
                   <label
                     className="sm:ml-2 font-medium sm:text-lg text-sm"
@@ -710,6 +714,7 @@ export default function WorkForm({
                     }
                     className="form-radio border-primary-100 border-2"
                     value="Less than a year"
+                    checked={formData.work_as_freelancer === "Less than a year"}
                   />
                   <label
                     className="sm:ml-2 font-medium sm:text-lg text-sm"
@@ -731,7 +736,8 @@ export default function WorkForm({
                       })
                     }
                     className="form-radio border-primary-100 border-2"
-                    value=" 1-3 years"
+                    value="1-3 years"
+                    checked={formData.work_as_freelancer === "1-3 years"}
                   />
                   <label
                     className="sm:ml-2 font-medium sm:text-lg text-sm"
@@ -754,6 +760,7 @@ export default function WorkForm({
                     }
                     className="form-radio border-primary-100 border-2"
                     value="4-6 years"
+                    checked={formData.work_as_freelancer === "4-6 years"}
                   />
                   <label
                     className="sm:ml-2 font-medium sm:text-lg text-sm"
@@ -775,6 +782,7 @@ export default function WorkForm({
                     }
                     className="form-radio border-primary-100 border-2"
                     value="7-10 years"
+                    checked={formData.work_as_freelancer === "7-10 years"}
                   />
                   <label
                     className="sm:ml-2 font-medium sm:text-lg text-sm"
@@ -796,6 +804,7 @@ export default function WorkForm({
                     }
                     className="form-radio border-primary-100 border-2"
                     value="+10 years"
+                    checked={formData.work_as_freelancer === "+10 years"}
                   />
                   <label
                     className="sm:ml-2 font-medium sm:text-lg text-sm"
@@ -822,6 +831,7 @@ export default function WorkForm({
                     }
                     className="form-checkbox rounded border-primary-100 border-2"
                     value="Digital Marketing"
+                    checked={formData.type_services_freelancer === "Digital Marketing"}
                   />
                   <label
                     className="sm:ml-2 font-medium sm:text-lg text-sm"
@@ -844,6 +854,7 @@ export default function WorkForm({
                     }
                     className="form-checkbox rounded border-primary-100 border-2"
                     value="Web design/ Software Development"
+                    checked={formData.type_services_freelancer === "Web design/ Software Development"}
                   />
                   <label
                     className="sm:ml-2 font-medium sm:text-lg text-sm"
@@ -866,6 +877,7 @@ export default function WorkForm({
                     }
                     className="form-checkbox rounded border-primary-100 border-2"
                     value="Content creation"
+                    checked={formData.type_services_freelancer === "Content creation"}
                   />
                   <label
                     className="sm:ml-2 font-medium sm:text-lg text-sm"
@@ -888,6 +900,7 @@ export default function WorkForm({
                     }
                     className="form-checkbox rounded border-primary-100 border-2"
                     value="Graphic designer"
+                    checked={formData.type_services_freelancer === "Graphic designer"}
                   />
                   <label
                     className="sm:ml-2 font-medium sm:text-lg text-sm"
@@ -909,6 +922,7 @@ export default function WorkForm({
                     }
                     className="form-checkbox rounded border-primary-100 border-2"
                     value="Project Management"
+                    checked={formData.type_services_freelancer === "Project Management"}
                   />
                   <label
                     className="sm:ml-2 font-medium sm:text-lg text-sm"
@@ -930,6 +944,7 @@ export default function WorkForm({
                     }
                     className="form-checkbox rounded border-primary-100 border-2"
                     value="Financial / Accounting services"
+                    checked={formData.type_services_freelancer === "Financial / Accounting services"}
                   />
                   <label
                     className="sm:ml-2 font-medium sm:text-lg text-sm"
@@ -951,6 +966,7 @@ export default function WorkForm({
                     }
                     className="form-checkbox rounded border-primary-100 border-2"
                     value="Consulting, Tutoring and Coaching"
+                    checked={formData.type_services_freelancer === "Consulting, Tutoring and Coaching"}
                   />
                   <label
                     className="sm:ml-2 font-medium sm:text-lg text-sm"
@@ -972,6 +988,7 @@ export default function WorkForm({
                     }
                     className="form-checkbox rounded border-primary-100 border-2"
                     value="Writing (CV, Research, etc)"
+                    checked={formData.type_services_freelancer === "Writing (CV, Research, etc)"}
                   />
                   <label
                     className="sm:ml-2 font-medium sm:text-lg text-sm"
@@ -993,6 +1010,7 @@ export default function WorkForm({
                     }
                     className="form-checkbox rounded border-primary-100 border-2"
                     value="Transition"
+                    checked={formData.type_services_freelancer === "Transition"}
                   />
                   <label
                     className="sm:ml-2 font-medium sm:text-lg text-sm"
@@ -1006,8 +1024,15 @@ export default function WorkForm({
                     type="checkbox"
                     id="radio3"
                     name="services"
+                    onChange={(e) =>
+                      setFormData({
+                        ...formData,
+                        type_services_freelancer: e.target.value,
+                      })
+                    }
                     className="form-checkbox rounded border-primary-100 border-2"
-                    value=" Other (Please specify)"
+                    value="Other"
+                    checked={formData.type_services_freelancer?.startsWith("Other")}
                   />
                   <label
                     className="sm:ml-2 font-medium sm:text-lg text-sm"
@@ -1016,19 +1041,23 @@ export default function WorkForm({
                     Other (Please specify)
                   </label>
                 </div>
-                <input
-                  type="text"
-                  name="other"
-                  value={formData.type_servuces_freelancer}
-                  onChange={(e) =>
-                    setFormData({
-                      ...formData,
-                      type_services_freelancer: e.target.value,
-                    })
-                  }
-                  className="w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm"
-                  placeholder="type..."
-                />
+                {
+                  (formData.type_services_freelancer?.startsWith("Other")) && (
+                    <input
+                      type="text"
+                      name="other"
+                      value={formData.type_services_freelancer.slice(6)}
+                      onChange={(e) =>
+                        setFormData({
+                          ...formData,
+                          type_services_freelancer: "Other " + e.target.value,
+                        })
+                      }
+                      className="w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm"
+                      placeholder="type..."
+                    />
+                  )
+                }
               </div>
               <div className="flex flex-col py-4">
                 <p className="sm:text-lg text-md font-normal text-[#413F9D] ">
@@ -1048,6 +1077,7 @@ export default function WorkForm({
                     }
                     className="form-radio border-primary-100 border-2"
                     value="0"
+                    checked={formData.projectsdeliver_monthly_freelancer === "0"}
                   />
                   <label
                     className="sm:ml-2 font-medium sm:text-lg text-sm"
@@ -1069,6 +1099,7 @@ export default function WorkForm({
                     }
                     className="form-radio border-primary-100 border-2"
                     value="1"
+                    checked={formData.projectsdeliver_monthly_freelancer === "1"}
                   />
                   <label
                     className="sm:ml-2 font-medium sm:text-lg text-sm"
@@ -1089,7 +1120,8 @@ export default function WorkForm({
                       })
                     }
                     className="form-radio border-primary-100 border-2"
-                    value=" 2-3"
+                    value="2-3"
+                    checked={formData.projectsdeliver_monthly_freelancer === "2-3"}
                   />
                   <label
                     className="sm:ml-2 font-medium sm:text-lg text-sm"
@@ -1111,6 +1143,7 @@ export default function WorkForm({
                     }
                     className="form-radio border-primary-100 border-2"
                     value="4-5"
+                    checked={formData.projectsdeliver_monthly_freelancer === "4-5"}
                   />
                   <label
                     className="sm:ml-2 font-medium sm:text-lg text-sm"
@@ -1133,6 +1166,7 @@ export default function WorkForm({
                     }
                     className="form-radio border-primary-100 border-2"
                     value="6-10"
+                    checked={formData.projectsdeliver_monthly_freelancer === "6-10"}
                   />
                   <label
                     className="sm:ml-2 font-medium sm:text-lg text-sm"
@@ -1154,6 +1188,7 @@ export default function WorkForm({
                     }
                     className="form-radio border-primary-100 border-2"
                     value=" 11-19"
+                    checked={formData.projectsdeliver_monthly_freelancer === "11-19"}
                   />
                   <label
                     className="sm:ml-2 font-medium sm:text-lg text-sm"
@@ -1175,6 +1210,7 @@ export default function WorkForm({
                     }
                     className="form-radio border-primary-100 border-2"
                     value="20+"
+                    checked={formData.projectsdeliver_monthly_freelancer === "20+"}
                   />
                   <label
                     className="sm:ml-2 font-medium sm:text-lg text-sm"
@@ -1211,7 +1247,7 @@ export default function WorkForm({
               </div>
             </div>
 
-            <div className={` ${form.visibleB}`}>
+            <div className={formData.employment_status === "Looking for a Job" ? "" : "hidden"}>
               <div>
                 <p className="sm:text-2xl text-xl font-medium text-[#413F9D]">
                   Professional details
@@ -1326,6 +1362,7 @@ export default function WorkForm({
                       }
                       className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                     >
+                      <option value="">Select...</option>
                       <option value="Afghanistan">Afghanistan</option>
                       <option value="Åland Islands">Åland Islands</option>
                       <option value="Albania">Albania</option>

@@ -234,7 +234,7 @@ export default function PersonalForm({
                 }
                 className={`form-radio border-primary-100 border-2 ${validation.ethnicity}`}
                 value="Self-Identify"
-                checked={formData.ethnicity === "Self-Identify"}
+                checked={formData.ethnicity.startsWith("Self-Identify")}
               />
               <label
                 className="sm:ml-2 font-medium sm:text-lg text-sm"
@@ -243,18 +243,21 @@ export default function PersonalForm({
                 Self-Identify
               </label>
             </div>
-            <input
-              type="text"
-              name="other"
-              onChange={(e) =>
-                setFormData({
-                  ...formData,
-                  ethnicity: "Self-Identify " + e.target.value,
-                })
-              }
-              className={`w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm ${validation.ethnicity}`}
-              placeholder="type..."
-            />
+            {formData.ethnicity.startsWith("Self-Identify") && (
+              <input
+                type="text"
+                name="other"
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    ethnicity: "Self-Identify " + e.target.value,
+                  })
+                }
+                className={`w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm ${validation.ethnicity}`}
+                placeholder="type..."
+                value={formData.ethnicity.slice(14)}
+              />
+            )}
           </div>
           <div className="">
             <label
@@ -353,6 +356,7 @@ export default function PersonalForm({
               }
               className={`form-radio  border-primary-100 border-2 ${validation.children}`}
               value="No children"
+              checked={formData.children === "No children"}
             />
             <label
               className="sm:ml-2 font-medium sm:text-lg text-sm"

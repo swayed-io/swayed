@@ -1,12 +1,18 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import AnchorLink from "react-anchor-link-smooth-scroll";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { getAuth } from "firebase/auth";
+import useAuth from "../../../hook/auth";
 
 export default function HeaderParticipant() {
-  let au = getAuth();
-  let user = au.currentUser;
+  const [currentUser, setCurrentUser] = useState(null);
+  const { user } = useAuth()
+
+  useEffect(() => {
+    if (user) {
+      setCurrentUser(user.reloadUserInfo)
+    }
+  }, [user])
 
   const [navbarOpen, setNavbarOpen] = React.useState(false);
   const router = useRouter();
@@ -25,7 +31,7 @@ export default function HeaderParticipant() {
             <div id="menu" className="md:inline sm:inline lg:inline hidden">
               <div className="flex flex-row">
                 <div className="flex flex-col  text-right">
-                  <p className="text-sm text-black font-medium ">Jhon Smith</p>
+                  <p className="text-sm text-black font-medium ">{currentUser?.displayName}</p>
                   <div className="flex flex-row gap-2">
                     <img src="/img/navbar_icon.svg" className="items-center" />
                     <p className="text-xs text-black opacity-40 font-regular ">
@@ -37,8 +43,8 @@ export default function HeaderParticipant() {
                   <a href="#" className="block shrink-0">
                     <img
                       alt="Man"
-                      src="/img/profile_icon.svg"
-                      className="  object-cover"
+                      src={currentUser ? currentUser.photoUrl : "/img/profile_icon.svg"}
+                      className="object-cover w-10 h-10 rounded-lg"
                     />
                   </a>
                 </div>

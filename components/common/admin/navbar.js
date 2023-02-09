@@ -1,5 +1,8 @@
 import Link from "next/link";
+import useAuth from "../../../hook/auth";
 export default function Navbar() {
+  const { logout } = useAuth()
+
   return (
     <div className="">
       <div>
@@ -172,7 +175,7 @@ export default function Navbar() {
                   <span>
                     <img src="/img/logout_icon.svg" className="w-5 h-5 " />
                   </span>
-                  <p className="ml-4 text-white font-medium text-sm">Logout</p>
+                  <p className="ml-4 text-white font-medium text-sm" onClick={logout}>Logout</p>
                 </a>
               </Link>
             </li>

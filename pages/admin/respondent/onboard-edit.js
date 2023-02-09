@@ -20,6 +20,7 @@ function OnboardPage({ auth }) {
     (async () => {
       const participant = await getParticipantsByUserID(user.uid);
       setFormData(participant);
+      console.log(participant)
     })();
     return () => {
       console.log("cleaning up");

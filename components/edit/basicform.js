@@ -1,5 +1,9 @@
 import cogoToast from "cogo-toast";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+
+const interestsArray = [{ "value": "Web3", "text": "Web3 🌐" }, { "value": "Tech", "text": "Tech 💻" }, { "value": "NFTs", "text": "NFTs 🎨" }, { "value": "Gaming", "text": "Gaming 🎮" }, { "value": "DeFi", "text": "DeFi 🤑" }, { "value": "DAO", "text": "DAO 🏛️" }, { "value": "Metaverse", "text": "Metaverse 🔮" }, { "value": "VR", "text": "VR 🥽" }, { "value": "A.I", "text": "A.I 🧠" }, { "value": "Science", "text": "Science 🧪" }, { "value": "E-commerce", "text": "E-commerce 🛍️" }, { "value": "Crypto", "text": "Crypto 💰" }, { "value": "Finance", "text": "Finance 📈" }, { "value": "Entrepreneurship", "text": "Entrepreneurship 👷" }, { "value": "Sports", "text": "Sports ⚽" }, { "value": "Health", "text": "Health 🥗" }, { "value": "Education", "text": "Education 📖" }, { "value": "Coding", "text": "Coding 🥷" }, { "value": "Travel", "text": "Travel 🏖️" }, { "value": "Fitness", "text": "Fitness 🏖️" }, { "value": "Fashion", "text": "Fashion 💪" }, { "value": "Beauty", "text": "Beauty 👒" }, { "value": "Animals", "text": "Animals 🐕‍🦺" }, { "value": "Food", "text": "Food 😋" }]
+
+
 export default function BasicForm({
   page,
   setPage,
@@ -13,9 +17,7 @@ export default function BasicForm({
     lastname: "",
     phone: "",
   });
-  const [filterinterest, setFilterInterest] = React.useState(
-    formData.interests
-  );
+  // const [filterinterest, setFilterInterest] = React.useState([]);
 
   const removeItemOnce = (arr, value) => {
     var index = arr.indexOf(value);
@@ -28,13 +30,17 @@ export default function BasicForm({
   const filterData = (event) => {
     let value = event.target.value;
 
-    if (!filterinterest.includes(value)) {
-      setFilterInterest((filterinterest) => [...filterinterest, value]);
+    const interests = formData.interests;
+
+    if (!interests.includes(value)) {
+      setFormData({ ...formData, interests: [...interests, value] });
+      // setFilterInterest((filterinterest) => [...filterinterest, value]);
       event.target.className =
         "rounded-full  border-2 shadow-md border-gray-200 p-2 hover:animate-bounce bg-green-500 text-white";
     } else {
-      const arrayUpdated = [...removeItemOnce(filterinterest, value)];
-      setFilterInterest(arrayUpdated);
+      const arrayUpdated = [...removeItemOnce(interests, value)];
+      setFormData({ ...formData, interests: [...arrayUpdated] });
+      // setFilterInterest(arrayUpdated);
 
       event.target.className =
         "rounded-full  border-2 shadow-md border-gray-200 p-2 hover:animate-bounce bg-white text-black";
@@ -800,174 +806,20 @@ export default function BasicForm({
               <span className="text-red-600">*</span>
             </label>
             <div className="grid grid-cols-2 gap-2">
-              <button
-                className={`rounded-full bg-white border-2 shadow-md border-gray-200 p-2 hover:animate-bounce`}
-                onClick={filterData}
-                value="Web3"
-              >
-                Web3🌐
-              </button>
-              <button
-                className={`rounded-full bg-white border-2 shadow-md border-gray-200 p-2 hover:animate-bounce`}
-                onClick={filterData}
-                value="Tech"
-              >
-                Tech💻
-              </button>
-              <button
-                className={`rounded-full bg-white border-2 shadow-md border-gray-200 p-2 hover:animate-bounce`}
-                onClick={filterData}
-                value="NFTs"
-              >
-                NFTs🎨
-              </button>
-              <button
-                className={`rounded-full bg-white border-2 shadow-md border-gray-200 p-2 hover:animate-bounce`}
-                onClick={filterData}
-                value="Gaming"
-              >
-                Gaming🎮
-              </button>
-              <button
-                className={`rounded-full bg-white border-2 shadow-md border-gray-200 p-2 hover:animate-bounce`}
-                onClick={filterData}
-                value="DeFi"
-              >
-                DeFi🤑
-              </button>
-              <button
-                className={`rounded-full bg-white border-2 shadow-md border-gray-200 p-2 hover:animate-bounce`}
-                onClick={filterData}
-                value="DAO"
-              >
-                DAO🏛️
-              </button>
-              <button
-                className={`rounded-full bg-white border-2 shadow-md border-gray-200 p-2 hover:animate-bounce`}
-                onClick={filterData}
-                value="Metaverse"
-              >
-                Metaverse🔮
-              </button>
-              <button
-                className={`rounded-full bg-white border-2 shadow-md border-gray-200 p-2 hover:animate-bounce`}
-                onClick={filterData}
-                value="VR"
-              >
-                VR🥽
-              </button>
-              <button
-                className={`rounded-full bg-white border-2 shadow-md border-gray-200 p-2 hover:animate-bounce`}
-                onClick={filterData}
-                value="A.I"
-              >
-                A.I🧠
-              </button>
-              <button
-                className={`rounded-full bg-white border-2 shadow-md border-gray-200 p-2 hover:animate-bounce`}
-                onClick={filterData}
-                value="Science"
-              >
-                Science🧪
-              </button>
-              <button
-                className={`rounded-full bg-white border-2 shadow-md border-gray-200 p-2 hover:animate-bounce`}
-                onClick={filterData}
-                value="E-commerce"
-              >
-                E-commerce🛍️
-              </button>
-              <button
-                className={`rounded-full bg-white border-2 shadow-md border-gray-200 p-2 hover:animate-bounce`}
-                onClick={filterData}
-                value="Crypto"
-              >
-                Crypto💰
-              </button>
-              <button
-                className={`rounded-full bg-white border-2 shadow-md border-gray-200 p-2 hover:animate-bounce`}
-                onClick={filterData}
-                value="Finance"
-              >
-                Finance📈
-              </button>
-              <button
-                className={`rounded-full bg-white border-2 shadow-md border-gray-200 p-2 hover:animate-bounce`}
-                onClick={filterData}
-                value="Entrepreneurship"
-              >
-                Entrepreneurship👷
-              </button>
-              <button
-                className={`rounded-full bg-white border-2 shadow-md border-gray-200 p-2 hover:animate-bounce`}
-                onClick={filterData}
-                value="Sports"
-              >
-                Sports⚽
-              </button>
-              <button
-                className={`rounded-full bg-white border-2 shadow-md border-gray-200 p-2 hover:animate-bounce`}
-                onClick={filterData}
-                value="Health"
-              >
-                Health🥗
-              </button>
-              <button
-                className={`rounded-full bg-white border-2 shadow-md border-gray-200 p-2 hover:animate-bounce`}
-                onClick={filterData}
-                value="Education"
-              >
-                Education📖
-              </button>
-              <button
-                className={`rounded-full bg-white border-2 shadow-md border-gray-200 p-2 hover:animate-bounce`}
-                onClick={filterData}
-                value="Coding"
-              >
-                Coding🥷
-              </button>
-              <button
-                className={`rounded-full bg-white border-2 shadow-md border-gray-200 p-2 hover:animate-bounce`}
-                onClick={filterData}
-                value="Travel"
-              >
-                Travel🏖️
-              </button>
-              <button
-                className={`rounded-full bg-white border-2 shadow-md border-gray-200 p-2 hover:animate-bounce`}
-                onClick={filterData}
-                value="Fitness"
-              >
-                Fitness🏖️
-              </button>
-              <button
-                className={`rounded-full bg-white border-2 shadow-md border-gray-200 p-2 hover:animate-bounce`}
-                onClick={filterData}
-                value="Fashion"
-              >
-                Fashion💪
-              </button>
-              <button
-                className={`rounded-full bg-white border-2 shadow-md border-gray-200 p-2 hover:animate-bounce`}
-                onClick={filterData}
-                value="Beauty"
-              >
-                Beauty👒
-              </button>
-              <button
-                className={`rounded-full  border-2 shadow-md border-gray-200 p-2  hover:animate-bounce`}
-                onClick={filterData}
-                value="Animals"
-              >
-                Animals🐕‍🦺
-              </button>
-              <button
-                className={`rounded-full  border-2 shadow-md border-gray-200 p-2 hover:animate-bounce`}
-                onClick={filterData}
-                value="Food"
-              >
-                Food😋
-              </button>
+              {
+                interestsArray.map((interest, index) => {
+                  return (
+                    <button
+                      className={formData?.interests.includes(interest.value) ? "rounded-full  border-2 shadow-md border-gray-200 p-2 hover:animate-bounce bg-green-500 text-white" : "rounded-full bg-white border-2 shadow-md border-gray-200 p-2 hover:animate-bounce"}
+                      onClick={filterData}
+                      value={interest.value}
+                      key={index}
+                    >
+                      {interest.text}
+                    </button>
+                  );
+                })
+              }
             </div>
           </div>
 
@@ -1009,13 +861,12 @@ export default function BasicForm({
                     "disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none invalid:border-pink-500 invalid:text-pink-600 focus:invalid:border-pink-500 focus:invalid:ring-pink-500",
                 });
               }
-              if (filterinterest.length === 0) {
+              if (formData.interests.length === 0) {
                 message = "Select at least one interest";
                 validate = false;
               }
 
               if (validate) {
-                setFormData({ ...formData, interests: filterinterest });
                 saveinfo(formData);
                 setDisable(false);
               } else {

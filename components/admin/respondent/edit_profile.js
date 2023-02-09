@@ -1,13 +1,14 @@
 import Link from "next/link";
 export default function EditProfile({ authService }) {
   const user = authService.getUser();
+  console.log(user)
   return (
     <div>
       <div className="bg-white p-8">
         <div className="flex flex-col">
           <img
-            src="/img/icons/editprofile/profile_icon.svg"
-            className="mx-auto"
+            src={user ? user.photoURL : "/img/icons/editprofile/profile_icon.svg"}
+            className="mx-auto rounded-lg"
           />
           <p className="font-semibold text-2xl mt-2 mx-auto">
             {user.displayName}

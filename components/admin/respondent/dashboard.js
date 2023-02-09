@@ -55,7 +55,7 @@ export default function Dashboard() {
                 />
               </div>
             </div>
-            <div className="bg-[#DFEEFD] rounded-md flex flex-row w-full mt-4 p-4">
+            {/* <div className="bg-[#DFEEFD] rounded-md flex flex-row w-full mt-4 p-4">
               <div className="flex flex-row items-center w-full justify-between">
                 <div className=" flex flex-row items-center ">
                   <div className="px-4">
@@ -86,7 +86,7 @@ export default function Dashboard() {
                   className="ml-2 mr-7 mx-auto"
                 />
               </div>
-            </div>
+            </div> */}
             <div className="bg-[#DFEEFD] rounded-md flex flex-row w-full mt-4 p-4">
               <div className="flex flex-row items-center w-full justify-between">
                 <div className=" flex flex-row items-center ">
@@ -114,7 +114,7 @@ export default function Dashboard() {
                 />
               </div>
             </div>
-            <div className="bg-[#DFEEFD] rounded-md flex flex-row w-full mt-4 p-4">
+            {/* <div className="bg-[#DFEEFD] rounded-md flex flex-row w-full mt-4 p-4">
               <div className="flex flex-row items-center w-full justify-between">
                 <div className="w-3/4 flex flex-row items-center ">
                   <div className="px-4">
@@ -143,7 +143,7 @@ export default function Dashboard() {
                   className=" items-end"
                 />
               </div>
-            </div>
+            </div> */}
             <div className="bg-[#DFEEFD] rounded-md flex flex-row w-full mt-4 p-4">
               <div className="flex flex-row items-center w-full justify-between">
                 <div className="w-3/4 flex flex-row items-center ">

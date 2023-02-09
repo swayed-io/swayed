@@ -5,8 +5,11 @@ import { useRouter } from "next/router";
 import HeaderAdmin from "./admin/header";
 import HeaderParticipant from "./admin/header_participant";
 import Navbar from "./admin/navbar";
+import AuthService from "../../lib/auth"
+
 
 function Layout(props) {
+
   const router = useRouter();
   if (!router.pathname.includes("/admin")) {
     return (

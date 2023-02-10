@@ -2,8 +2,10 @@ import PersonalInfoForm from "/components/researchers/PersonalInfoForm";
 import ProjectInfoForm from "/components/researchers/ProjectInfoForm";
 import PaymentInfoForm from "/components/researchers/PaymentInfoForm";
 import { useState } from "react";
+import { saveResearcher } from "../lib/data";
 const saveShareProject = (data) => {
-  console.log(data);
+  // console.log(data);
+  saveResearcher(data)
 };
 export default function Share() {
   const [formData, setFormData] = useState({

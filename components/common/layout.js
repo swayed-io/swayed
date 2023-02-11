@@ -22,8 +22,8 @@ function Layout(props) {
   } else if (router.pathname.includes("/admin/respondent/dashboard")) {
     return (
       <div className="bg-background-100 w-full">
-        <div className="flex flex-row">
-          <div className="w-1/4 h-screen sticky top-0">
+        <div className="flex flex-row ">
+          <div className="w-1/4 h-full sticky top-0">
             <Navbar />
           </div>
           <div className="w-full">

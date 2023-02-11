@@ -14,6 +14,7 @@ import AccountDetails from "../../../../components/admin/respondent/account_deta
 import Notifications from "../../../../components/admin/respondent/notifications";
 import ProjectsBlank from "../../../../components/admin/respondent/projects_blank";
 import AuthService from "/lib/auth";
+import Messages from "../../../../components/admin/respondent/Messages";
 
 function DashboardPage() {
   const router = useRouter();
@@ -27,7 +28,7 @@ function DashboardPage() {
     return <div className="p-4 ">{<Cashout />}</div>;
   }
   if (router.asPath.includes("/admin/respondent/dashboard#messages")) {
-    return <div className="p-4 ">{<Listings />}</div>;
+    return <div className="p-4 ">{<Dashboard authService={AuthService} />}</div>;
   }
   if (router.asPath.includes("/admin/respondent/dashboard#referrals")) {
     return <div className="p-4 ">{<Referrals />}</div>;

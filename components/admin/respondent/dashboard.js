@@ -1,22 +1,64 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { getParticipantsByUserID } from "../../../lib/data";
+import { getParticipantsByUserID, getResearchers } from "../../../lib/data";
+import Pagination from "./Pagination";
 import ScrappedOffer from "./ScrappedOffer";
+import ShareProject from "./ShareProject";
+
 
 export default function Dashboard({ authService }) {
 
   const user = authService.getUser()
   const [participant, setParticipant] = useState();
 
-  const [scrappedOffers, setScrappedOffers] = useState(undefined)
+  const [projects, setProjects] = useState([])
   const [isLoading, setLoading] = useState(false)
+
+  const [search, setSearch] = useState('');
+  const [currentPage, setCurrentPage] = useState(1);
+  const [projectsPerPage] = useState(5);
+  const [skip, setSkip] = useState(false);
+
+  // Filter projects
+  const filtredProjects = projects.filter(project => {
+    if (project.type === "ShareProject")
+      return project.value.project_title.toLowerCase().includes(search.toLowerCase())
+    else
+      return project.value.title.toLowerCase().includes(search.toLowerCase())
+  }
+  );
+  // Get current posts
+  const indexOfLastProject = currentPage * projectsPerPage;
+  const indexOfFirstProject = indexOfLastProject - projectsPerPage;
+  const currentProject = filtredProjects.slice(indexOfFirstProject, indexOfLastProject);
+
+  // Change page
+  const paginateFront = () => setCurrentPage(currentPage + 1);
+  const paginateBack = () => setCurrentPage(currentPage - 1);
 
   useEffect(() => {
     setLoading(true)
-    fetch('http://localhost:8080/scrape-offers')
-      .then((res) => res.json())
-      .then((data) => {
-        setScrappedOffers(data)
+
+    getResearchers()
+      .then(data => {
+        const shareProjects = data.map((v) => {
+          return { type: "ShareProject", value: v }
+        })
+        fetch('http://localhost:8080/scrape-offers')
+          .then((res) => res.json())
+          .then((data) => {
+            const scrappedOffers = data.map((v) => {
+              return { type: "ScrappedOffer", value: v }
+            })
+            setProjects([...shareProjects, ...scrappedOffers])
+            setLoading(false)
+          })
+          .catch((err) => {
+            setProjects([...shareProjects])
+            setLoading(false)
+          })
+      })
+      .catch((err) => {
         setLoading(false)
       })
   }, [])
@@ -25,20 +67,35 @@ export default function Dashboard({ authService }) {
     (async () => {
       const participant = await getParticipantsByUserID(user.uid);
       setParticipant(participant);
-      console.log(participant)
     })();
   }, [user.uid]);
 
 
+  const handleSkip = () => {
+    localStorage.setItem("skip_fo_now", true);
+    setSkip(true)
+    setTimeout(() => {
+      localStorage.removeItem("skip_fo_now");
+    }, 3600000);
+  }
+
+  useEffect(() => {
+    localStorage.getItem("skip_fo_now") && setSkip(true)
+  }, [])
+
+  // console.log(projects)
+
   return (
     <div className="flex flex-row">
       <div id="listings" className="sm:p-2 p-4 bg-background-100 w-3/4">
-        <div className="">
+        <div className={skip ? "hidden" : ""}>
           <div className="flex flex-row justify-between">
             <p className="font-semibold text-2xl">
               We need a few more things from you
             </p>
-            <button className="rounded-full px-4 py-2 border-2 border-secondary-100 text-secondary-100 text-sm font-medium">
+            <button
+              onClick={handleSkip}
+              className="rounded-full px-4 py-2 border-2 border-secondary-100 text-secondary-100 text-sm font-medium">
               Skip for now
             </button>
           </div>
@@ -214,39 +271,52 @@ export default function Dashboard({ authService }) {
             </Link>
           </div>
         </div>
-        <div className="py-4  flex flex-row gap-x-6">
-          <button className="rounded-full  text-center font-medium text-sm justify-between  w-[48em]  flex flex-row gap-2 ">
-            <input className=" items-center rounded-full bg-white w-[35em] py-3 px-4 text-sm font-medium opacity-40" placeholder="Search projects by keyword" />
-            <img src="/img/icons/respondent_d/search_icon.svg" />
-          </button>
-          <button className="rounded-full bg-white text-center py-2 px-4 font-medium text-sm     flex flex-row gap-2 items-center ">
-            <img
-              src="/img/icons/respondent_d/filter_icon.svg"
-              className="opacity-80"
-            />
-            <span className="opacity-80 text-sm">Filter (0)</span>
-          </button>
-          <button className="rounded-full bg-white text-center py-2 px-4 font-medium text-sm     flex flex-row gap-2  items-center">
-            <span className="opacity-80 text-sm">Sort Most Relevant</span>
-            <img
-              src="/img/icons/respondent_d/row_icon.svg"
-              className="opacity-80"
-            />
-          </button>
+        <div className="py-4  flex flex-row gap-x-6 justify-between">
+          <div class="relative flex-1">
+            <input class="rounded-full text-left font-medium text-sm w-full flex flex-row gap-2 p-3 pl-10 " placeholder="Search projects by keyword" onChange={(e) => setSearch(e.target.value)} />
+            <img class="absolute right-0 top-0 bottom-0" src="/img/icons/respondent_d/search_icon.svg" />
+          </div>
+
+
+          <div className="flex">
+            <button className="rounded-full bg-white text-center py-2 px-4 font-medium text-sm     flex flex-row gap-2 items-center ">
+              <img
+                src="/img/icons/respondent_d/filter_icon.svg"
+                className="opacity-80"
+              />
+              <span className="opacity-80 text-sm">Filter (0)</span>
+            </button>
+            <button className="rounded-full bg-white text-center py-2 px-4 font-medium text-sm     flex flex-row gap-2  items-center">
+              <span className="opacity-80 text-sm">Sort Most Relevant</span>
+              <img
+                src="/img/icons/respondent_d/row_icon.svg"
+                className="opacity-80"
+              />
+            </button>
+          </div>
         </div>
-        <div className="mb-4">
+        {/* <div className="mb-4">
           <p className="font-medium text-sm">15 of 40 projects</p>
-        </div>
+        </div> */}
         {
           isLoading ? <p>Loading...</p> :
-            scrappedOffers ?
-              scrappedOffers.map((offer,indx) => {
-                return (
-                  <ScrappedOffer offer={offer} key={indx} />
-                )
-              })
-              : <p>No offers available</p>
+            currentProject.length > 0 ?
+              currentProject.map((project, index) => {
+                if (project.type === "ShareProject")
+                  return <ShareProject project={project.value} key={index} />
+                else
+                  return <ScrappedOffer offer={project.value} key={index} />
+              }
+              )
+              : <p>No Projects Found</p>
         }
+        <Pagination
+          projectsPerPage={projectsPerPage}
+          totalProjects={projects.length}
+          paginateBack={paginateBack}
+          paginateFront={paginateFront}
+          currentPage={currentPage}
+        />
         {
           // projects.map((p) => (
           //   <div key={p} className="rounded-xl bg-white">

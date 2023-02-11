@@ -10,13 +10,13 @@ export function withPublic(Component) {
 		if (auth.user) {
 			router.replace("/admin/respondent/onboard");
 			return (<div className="flex w-full"><button type="button" className="bg-indigo-500 mx-auto " >
-			<svg className="animate-spin h-5 w-5 mr-3 " viewBox="0 0 24 24">
-			
-			</svg>
-			Processing...
-		  </button></div>);
+				<svg className="animate-spin h-5 w-5 mr-3 " viewBox="0 0 24 24">
+
+				</svg>
+				Processing...
+			</button></div>);
 		}
-		return <Component auth={auth} {...props}/>
+		return <Component auth={auth} {...props} />
 	};
 }
 
@@ -26,13 +26,13 @@ export function withProtected(Component) {
 		const router = useRouter();
 
 		if (!auth.user) {
-			router.replace("/");
+			router.replace("/signup");
 			return (<div className="flex w-full"><button type="button" className="bg-indigo-500 mx-auto " >
-			<svg className="animate-spin h-5 w-5 mr-3 " viewBox="0 0 24 24">
-			
-			</svg>
-			Processing...
-		  </button></div>);
+				<svg className="animate-spin h-5 w-5 mr-3 " viewBox="0 0 24 24">
+
+				</svg>
+				Processing...
+			</button></div>);
 		}
 		return <Component auth={auth} {...props} />;
 	};

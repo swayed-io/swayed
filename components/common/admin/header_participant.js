@@ -43,7 +43,7 @@ export default function HeaderParticipant() {
                   <a href="#" className="block shrink-0">
                     <img
                       alt="Man"
-                      src={currentUser ? currentUser.photoUrl : "/img/profile_icon.svg"}
+                      src={currentUser?.photoUrl ? currentUser.photoUrl : "/img/profile_icon.svg"}
                       className="object-cover w-10 h-10 rounded-lg"
                     />
                   </a>

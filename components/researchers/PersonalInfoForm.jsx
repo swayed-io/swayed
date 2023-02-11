@@ -60,7 +60,7 @@ const PersonalInfoForm = ({ page, setPage, formData, setFormData }) => {
               <input
                 type="email"
                 id="email"
-                name="email"
+                name="first_name"
                 value={formData.first_name}
                 onChange={(e) =>
                   setFormData({ ...formData, first_name: e.target.value })

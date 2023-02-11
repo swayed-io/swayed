@@ -98,7 +98,7 @@ const PaymentInfoForm = ({
           Save
         </button>
       </div>
-      <div className="my-2 w-full my-2 ">
+      <div className="my-2 w-full  ">
         <button
           onClick={() => {
             setPage(page - 1);

@@ -191,7 +191,7 @@ const ProjectInfoForm = ({ page, setPage, formData, setFormData }) => {
             {/* expires_on */}
             <div>
               <label
-                htmlFor="registration_url"
+                htmlFor="expires_on"
                 className="sm:text-lg text-md font-normal text-[#413F9D]"
               >
                 Exprie On <span className="text-red-600">*</span>

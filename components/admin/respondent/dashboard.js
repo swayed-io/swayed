@@ -174,10 +174,8 @@ export default function Dashboard() {
           </div>
         </div>
         <div className="py-4  flex flex-row gap-x-6">
-          <button className="rounded-full bg-white text-center   font-medium text-sm justify-between  w-[48em]  flex flex-row gap-2 ">
-            <span className=" items-center py-3 px-4 text-sm font-medium opacity-40">
-              Search projects by keyword
-            </span>
+          <button className="rounded-full  text-center font-medium text-sm justify-between  w-[48em]  flex flex-row gap-2 ">
+            <input className=" items-center rounded-full bg-white w-[35em] py-3 px-4 text-sm font-medium opacity-40" placeholder="Search projects by keyword" />
             <img src="/img/icons/respondent_d/search_icon.svg" />
           </button>
           <button className="rounded-full bg-white text-center py-2 px-4 font-medium text-sm     flex flex-row gap-2 items-center ">
@@ -201,9 +199,9 @@ export default function Dashboard() {
         {
           isLoading ? <p>Loading...</p> :
             scrappedOffers ?
-              scrappedOffers.map((offer) => {
+              scrappedOffers.map((offer,indx) => {
                 return (
-                  <ScrappedOffer offer={offer} />
+                  <ScrappedOffer offer={offer} key={indx} />
                 )
               })
               : <p>No offers available</p>

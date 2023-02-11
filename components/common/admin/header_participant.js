@@ -31,7 +31,7 @@ export default function HeaderParticipant() {
             <div id="menu" className="md:inline sm:inline lg:inline hidden">
               <div className="flex flex-row">
                 <div className="flex flex-col  text-right">
-                  <p className="text-sm text-black font-medium ">{currentUser?.displayName}</p>
+                  <p className="text-sm text-black font-medium ">{currentUser?.displayName ? currentUser?.displayName : "_"}</p>
                   <div className="flex flex-row gap-2">
                     <img src="/img/navbar_icon.svg" className="items-center" />
                     <p className="text-xs text-black opacity-40 font-regular ">

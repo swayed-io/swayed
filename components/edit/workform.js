@@ -335,7 +335,7 @@ export default function WorkForm({
                         setFormData({ ...formData, seniority: e.target.value })
                       }
                       className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                      name="repassword"
+                      name="seniority"
                     >
                       <option value="">Select...</option>
                       <option value="Employee">Employee</option>
@@ -380,8 +380,8 @@ export default function WorkForm({
                   <div className="relative mt-1">
                     <input
                       type="text"
-                      id="work_email"
-                      name="work_email"
+                      id="Work_email"
+                      name="Work_email"
                       value={formData.Work_email}
                       onChange={(e) =>
                         setFormData({ ...formData, Work_email: e.target.value })
@@ -550,6 +550,7 @@ export default function WorkForm({
                     }
                     className="form-checkbox rounded border-primary-100 border-2"
                     value="1099 (US only)"
+                    checked={formData.type_of_income === "1099 (US only)"}
                   />
                   <label
                     className="sm:ml-2 font-medium sm:text-lg text-sm"
@@ -570,6 +571,7 @@ export default function WorkForm({
                     }
                     className="form-checkbox rounded border-primary-100 border-2"
                     value="W2 (US only)"
+                    checked={formData.type_of_income === "W2 (US only)"}
                   />
                   <label
                     className="sm:ml-2 font-medium sm:text-lg text-sm"
@@ -590,6 +592,7 @@ export default function WorkForm({
                     }
                     className="form-checkbox rounded border-primary-100 border-2"
                     value="Other"
+                    checked={formData.type_of_income === "Other"}
                   />
                   <label
                     className="sm:ml-2 font-medium sm:text-lg text-sm"
@@ -610,6 +613,7 @@ export default function WorkForm({
                     }
                     className="form-checkbox rounded border-primary-100 border-2"
                     value="None of the above"
+                    checked={formData.type_of_income === "None of the above"}
                   />
                   <label
                     className="sm:ml-2 font-medium sm:text-lg text-sm"
@@ -658,8 +662,8 @@ export default function WorkForm({
                   <div className="relative mt-1">
                     <input
                       type="text"
-                      id="job_title"
-                      name="job_title"
+                      id="linkedin_profile"
+                      name="linkedin_profile"
                       className="w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm"
                       placeholder="linkedin.com/in/username"
                     />
@@ -1273,7 +1277,7 @@ export default function WorkForm({
                       })
                     }
                     className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                    name="repassword"
+                    name="kind_job_looking"
                   >
                     <option value="">Select...</option>
                     <option value="Remote">Remote</option>
@@ -1303,7 +1307,7 @@ export default function WorkForm({
                       })
                     }
                     className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                    name="repassword"
+                    name="salary_estimate"
                   >
                     <option value="">Select...</option>
                     <option value="$20,000+">$20,000+</option>
@@ -1331,7 +1335,7 @@ export default function WorkForm({
                         setFormData({ ...formData, job_type: e.target.value })
                       }
                       className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                      name="repassword"
+                      name="job_type"
                     >
                       <option value="">Select...</option>
                       <option value="Full-time">Full-time</option>
@@ -1352,7 +1356,7 @@ export default function WorkForm({
 
                   <div className="relative mt-1 text-lg">
                     <select
-                      name="country"
+                      name="location_job"
                       value={formData.location_job}
                       onChange={(e) =>
                         setFormData({
@@ -1700,7 +1704,7 @@ export default function WorkForm({
 
                   <div className="relative mt-1">
                     <select
-                      id=""
+                      id="experience_level"
                       name="experience_level"
                       value={formData.experience_level}
                       onChange={(e) =>
@@ -1728,7 +1732,33 @@ export default function WorkForm({
           <button
             className="block w-full rounded-lg bg-secondary-100 px-5 py-3 transition ease-in-out delay-150 active:bg-green-500  hover:-translate-y-1 hover:scale-110 text-sm font-semibold text-white   disabled:opacity-50"
             onClick={() => {
-              saveinfo(formData);
+
+              let updatedFormData = formData
+
+              if (formData.employment_status !== "Freelancer") {
+                ["work_as_freelancer", "projectsdeliver_monthly_freelancer", "type_services_freelancer"].forEach((key) => {
+                  const { [key]: unused, ...rest } = updatedFormData
+                  updatedFormData = rest
+                })
+              }
+              if (formData.employment_status !== "Looking for a Job") {
+                ["kind_job_looking", "salary_estimate", "job_type", "location_job", "experience_level"].forEach((key) => {
+                  const { [key]: unused, ...rest } = updatedFormData
+                  updatedFormData = rest
+                })
+              }
+              if (!["Part-time employed", "Full-time employed"].includes(formData.employment_status)) {
+                ["job_title", "seniority", "skills", "Work_email", "company", "company_size", "industry", "business_owner", "type_of_income", "like_currentjob"].forEach((key) => {
+                  const { [key]: unused, ...rest } = updatedFormData
+                  updatedFormData = rest
+                })
+                if (formData.employment_status !== "Freelancer") {
+                  delete updatedFormData["linkedin_profile"]
+                }
+              }
+              console.log(updatedFormData);
+              setFormData({ ...updatedFormData })
+              saveinfo(updatedFormData);
               setDisable(false);
             }}
           >

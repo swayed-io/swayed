@@ -1,6 +1,23 @@
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import { getParticipantsByUserID, updateParticipantNotificationsSettings } from "../../../lib/data";
 export default function Notifications({ authService }) {
   const user = authService.getUser();
+  const [participant, setParticipant] = useState();
+  const [notifications, setNotifications] = useState({
+    isMonthlyDigestChecked: false,
+    isTargetedResearchInvitationChecked: false,
+  });
+
+  useEffect(() => {
+    (async () => {
+      const participant = await getParticipantsByUserID(user.uid);
+      setParticipant(participant);
+      setNotifications({ isMonthlyDigestChecked: (participant.isMonthlyDigestChecked || false), isTargetedResearchInvitationChecked: (participant.isTargetedResearchInvitationChecked || false) })
+      console.log(participant)
+    })();
+  }, [user.uid]);
+
   return (
     <div>
       <div className="bg-white rounded-md p-4">
@@ -11,7 +28,13 @@ export default function Notifications({ authService }) {
                 <input
                   type="checkbox"
                   className="form-checkbox text-secondary-100 rounded-sm"
-                  checked
+                  checked={notifications.isMonthlyDigestChecked}
+                  onChange={() => {
+                    setNotifications({
+                      ...notifications,
+                      isMonthlyDigestChecked: !notifications.isMonthlyDigestChecked,
+                    });
+                  }}
                 />
                 <span className="ml-2 text-base font-medium opacity-80">
                   Monthly Digest
@@ -25,7 +48,13 @@ export default function Notifications({ authService }) {
                 <input
                   type="checkbox"
                   className="form-checkbox text-secondary-100 rounded-sm"
-                  checked
+                  checked={notifications.isTargetedResearchInvitationChecked}
+                  onChange={() => {
+                    setNotifications({
+                      ...notifications,
+                      isTargetedResearchInvitationChecked: !notifications.isTargetedResearchInvitationChecked,
+                    });
+                  }}
                 />
                 <span className="ml-2 text-base font-medium opacity-80">
                   Targeted Research Invitation
@@ -35,9 +64,11 @@ export default function Notifications({ authService }) {
           </div>
         </div>
         <div className="flex flex-row-reverse">
-          <button className="px-6 py-2  font-medium bg-gradient-to-tr from-primary-100 to-secondary-100  text-white rounded-full border-0  focus:outline-none hover:bg-gray-200  sm:ml-0 ml-64  text-base mt-8 transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110">
+          {(participant?.id) && (<button
+            onClick={() => updateParticipantNotificationsSettings(participant, notifications)}
+            className="px-6 py-2 font-medium bg-gradient-to-tr from-primary-100 to-secondary-100  text-white rounded-full border-0  focus:outline-none hover:bg-gray-200  sm:ml-0 ml-64  text-base mt-8 transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110">
             Save
-          </button>
+          </button>)}
         </div>
       </div>
       <div className="mt-4 rounded-md bg-[#DFEEFD] flex flex-row  p-4">
@@ -58,6 +89,6 @@ export default function Notifications({ authService }) {
           </div>
         </div>
       </div>
-    </div>
+    </div >
   );
 }

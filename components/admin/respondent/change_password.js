@@ -37,7 +37,7 @@ export default function ChangePassword({ authService }) {
       <div className="bg-white p-8">
         <div className="flex flex-col p-4 mx-auto w-96">
           <div>
-            <div>
+            <div className="mb-2">
               <div className="relative">
                 <input
                   type={isPasswordVisible ? "text" : "password"}

@@ -18,7 +18,7 @@ import AuthService from "/lib/auth";
 function DashboardPage() {
   const router = useRouter();
   if (router.asPath.includes("/admin/respondent/dashboard#projects")) {
-    return <div className="p-4 ">{<Dashboard />}</div>;
+    return <div className="p-4 ">{<Dashboard authService={AuthService} />}</div>;
   }
   if (router.asPath.includes("/admin/respondent/dashboard#earn")) {
     return <div className="p-4 ">{<Earn />}</div>;
@@ -56,9 +56,9 @@ function DashboardPage() {
     );
   }
   if (router.asPath.includes("/admin/respondent/dashboard#helpcenter")) {
-    return <div className="p-4 ">{<Dashboard />}</div>;
+    return <div className="p-4 ">{<Dashboard authService={AuthService} />}</div>;
   } else {
-    return <div className="p-4 ">{<Dashboard />}</div>;
+    return <div className="p-4 ">{<Dashboard authService={AuthService} />}</div>;
   }
 }
 

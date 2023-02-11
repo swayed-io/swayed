@@ -1,7 +1,12 @@
+import Link from "next/link";
 import { useEffect, useState } from "react";
+import { getParticipantsByUserID } from "../../../lib/data";
 import ScrappedOffer from "./ScrappedOffer";
 
-export default function Dashboard() {
+export default function Dashboard({ authService }) {
+
+  const user = authService.getUser()
+  const [participant, setParticipant] = useState();
 
   const [scrappedOffers, setScrappedOffers] = useState(undefined)
   const [isLoading, setLoading] = useState(false)
@@ -16,6 +21,15 @@ export default function Dashboard() {
       })
   }, [])
 
+  useEffect(() => {
+    (async () => {
+      const participant = await getParticipantsByUserID(user.uid);
+      setParticipant(participant);
+      console.log(participant)
+    })();
+  }, [user.uid]);
+
+
   return (
     <div className="flex flex-row">
       <div id="listings" className="sm:p-2 p-4 bg-background-100 w-3/4">
@@ -29,32 +43,42 @@ export default function Dashboard() {
             </button>
           </div>
           <div className="mt-4">
-            <div className="bg-[#DFEEFD] rounded-md flex flex-row w-full mt-4 p-4">
-              <div className="flex flex-row items-center w-full justify-between">
-                <div className="w-3/4 flex flex-row items-center ">
-                  <div className="px-4">
-                    <img
-                      src="/img/icons/dashboard/camera_icon.svg"
-                      className="mx-auto"
-                    />
-                  </div>
-                  <div className="ml-4">
-                    <p className="text-base text-secondary-100 font-semibold">
-                      Upload a profile photo
-                    </p>
-                    <p className="text-sm font-medium opacity-80">
-                      Required to apply to projects.
-                    </p>
+            <Link href="/admin/respondent/dashboard#editprofile">
+              <div className="bg-[#DFEEFD] rounded-md flex flex-row w-full mt-4 p-4 cursor-pointer">
+                <div className="flex flex-row items-center w-full justify-between">
+                  <div className="w-3/4 flex flex-row items-center ">
+                    <div className="px-4">
+                      <img
+                        src="/img/icons/dashboard/camera_icon.svg"
+                        className="mx-auto"
+                      />
+                    </div>
+                    <div className="ml-4">
+                      <p className="text-base text-secondary-100 font-semibold">
+                        Upload a profile photo
+                      </p>
+                      <p className="text-sm font-medium opacity-80">
+                        Required to apply to projects.
+                      </p>
+                    </div>
                   </div>
                 </div>
+                <div className="px-4 flex items-center">
+                  {user?.photoURL ? (
+
+                    <img
+                      src="/img/icons/dashboard/check_green.svg"
+                      className=" items-end"
+                    />
+                  ) : (
+                    <img
+                      src="/img/icons/dashboard/check_gray.svg"
+                      className=" items-end"
+                    />
+                  )}
+                </div>
               </div>
-              <div className="px-4 flex items-center">
-                <img
-                  src="/img/icons/dashboard/check_green.svg"
-                  className=" items-end"
-                />
-              </div>
-            </div>
+            </Link>
             {/* <div className="bg-[#DFEEFD] rounded-md flex flex-row w-full mt-4 p-4">
               <div className="flex flex-row items-center w-full justify-between">
                 <div className=" flex flex-row items-center ">
@@ -87,33 +111,35 @@ export default function Dashboard() {
                 />
               </div>
             </div> */}
-            <div className="bg-[#DFEEFD] rounded-md flex flex-row w-full mt-4 p-4">
-              <div className="flex flex-row items-center w-full justify-between">
-                <div className=" flex flex-row items-center ">
-                  <div className="px-4">
-                    <img
-                      src="/img/icons/dashboard/linkedin_icon.svg"
-                      className="mx-auto"
-                    />
-                  </div>
-                  <div className="ml-4">
-                    <p className="text-base text-secondary-100 font-semibold">
-                      Add LinkedIn
-                    </p>
-                    <p className="text-sm font-medium opacity-80">
-                      Help researchers verify your identity and increase your
-                      chances of being selected for projects.{" "}
-                    </p>
+            <Link href="/admin/respondent/dashboard#socialaccounts">
+              <div className="bg-[#DFEEFD] rounded-md flex flex-row w-full mt-4 p-4 cursor-pointer">
+                <div className="flex flex-row items-center w-full justify-between">
+                  <div className=" flex flex-row items-center ">
+                    <div className="px-4">
+                      <img
+                        src="/img/icons/dashboard/linkedin_icon.svg"
+                        className="mx-auto"
+                      />
+                    </div>
+                    <div className="ml-4">
+                      <p className="text-base text-secondary-100 font-semibold">
+                        Add LinkedIn
+                      </p>
+                      <p className="text-sm font-medium opacity-80">
+                        Help researchers verify your identity and increase your
+                        chances of being selected for projects.{" "}
+                      </p>
+                    </div>
                   </div>
                 </div>
+                <div className="px-4 flex items-center">
+                  <img
+                    src="/img/icons/dashboard/check_gray.svg"
+                    className=" items-end"
+                  />
+                </div>
               </div>
-              <div className="px-4 flex items-center">
-                <img
-                  src="/img/icons/dashboard/check_gray.svg"
-                  className=" items-end"
-                />
-              </div>
-            </div>
+            </Link>
             {/* <div className="bg-[#DFEEFD] rounded-md flex flex-row w-full mt-4 p-4">
               <div className="flex flex-row items-center w-full justify-between">
                 <div className="w-3/4 flex flex-row items-center ">
@@ -144,33 +170,48 @@ export default function Dashboard() {
                 />
               </div>
             </div> */}
-            <div className="bg-[#DFEEFD] rounded-md flex flex-row w-full mt-4 p-4">
-              <div className="flex flex-row items-center w-full justify-between">
-                <div className="w-3/4 flex flex-row items-center ">
-                  <div className="px-4">
-                    <img
-                      src="/img/icons/dashboard/income_icon.svg"
-                      className="mx-auto"
-                    />
-                  </div>
-                  <div className="ml-4">
-                    <p className="text-base text-secondary-100 font-semibold">
-                      Add your household income
-                    </p>
-                    <p className="text-sm font-medium opacity-80">
-                      This helps qualify you for more general population
-                      projects.
-                    </p>
+            <Link
+              href={{
+                pathname: "/admin/respondent/onboard-edit",
+                query: { pageQuery: 2 },
+              }}
+            >
+              <div className="bg-[#DFEEFD] rounded-md flex flex-row w-full mt-4 p-4 cursor-pointer">
+                <div className="flex flex-row items-center w-full justify-between">
+                  <div className="w-3/4 flex flex-row items-center ">
+                    <div className="px-4">
+                      <img
+                        src="/img/icons/dashboard/income_icon.svg"
+                        className="mx-auto"
+                      />
+                    </div>
+                    <div className="ml-4">
+                      <p className="text-base text-secondary-100 font-semibold">
+                        Add your household income
+                      </p>
+                      <p className="text-sm font-medium opacity-80">
+                        This helps qualify you for more general population
+                        projects.
+                      </p>
+                    </div>
                   </div>
                 </div>
+                <div className="px-4 flex items-center">
+                  {participant?.household_income ? (
+
+                    <img
+                      src="/img/icons/dashboard/check_green.svg"
+                      className=" items-end"
+                    />
+                  ) : (
+                    <img
+                      src="/img/icons/dashboard/check_gray.svg"
+                      className=" items-end"
+                    />
+                  )}
+                </div>
               </div>
-              <div className="px-4 flex items-center">
-                <img
-                  src="/img/icons/dashboard/check_gray.svg"
-                  className=" items-end"
-                />
-              </div>
-            </div>
+            </Link>
           </div>
         </div>
         <div className="py-4  flex flex-row gap-x-6">

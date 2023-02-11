@@ -34,7 +34,7 @@ export default function SocialA({ authService }) {
             </div>
           </div>
           <div className="flex flex-row-reverse mt-4">
-            {socialNetwork.password ? (
+            {socialNetwork.linkedin ? (
               <button className="text-sm font-medium bg-[#18D284] text-white rounded-full px-4 py-2 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 ">
                 Connected
               </button>
@@ -84,7 +84,7 @@ export default function SocialA({ authService }) {
         <div className="rounded-md px-8 py-4 bg-white">
           <div className="flex flex-row items-center">
             <div>
-              <img src="/img/icons/socialA/github_icon.svg" className="w-8" />
+              <img src="/img/icons/socialA/google_icon.svg" className="w-8" />
             </div>
             <div className="ml-4">
               <p className="text-base font-semibold">Google</p>
@@ -114,7 +114,7 @@ export default function SocialA({ authService }) {
             )}
           </div>
         </div>
-        <div className="rounded-md px-8 py-4 bg-white">
+        {/* <div className="rounded-md px-8 py-4 bg-white">
           <div className="flex flex-row items-center">
             <div>
               <img src="/img/icons/socialA/slack_icon.svg" className="w-8" />
@@ -131,7 +131,7 @@ export default function SocialA({ authService }) {
               Connect Account
             </button>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

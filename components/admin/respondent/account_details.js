@@ -178,7 +178,9 @@ export default function AccountDetails({ authService }) {
           </div>
 
           <div className="ml-16">
-            <button className=" w-64  items-center px-6 py-2  font-medium bg-[#FF5252]  text-white rounded-full border-0  focus:outline-none hover:bg-gray-200  sm:ml-0   text-base  transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110">
+            <button
+              onClick={() => authService.disableUser()}
+              className=" w-64  items-center px-6 py-2  font-medium bg-[#FF5252]  text-white rounded-full border-0  focus:outline-none hover:bg-gray-200  sm:ml-0   text-base  transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110">
               Deactivate Account
             </button>
           </div>

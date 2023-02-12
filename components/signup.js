@@ -65,7 +65,7 @@ export default function Signup({ signup, auth }) {
         <div className={`mt-6 mb-0 space-y-4 rounded-lg p-8  ${form.visible}`}>
           <div className="flex flex-row space-x-8">
             <div className="w-1/2 hover:-translate-y-1 hover:scale-110">
-              <Link href="/researchers">
+              <Link href="/">
                 <button>
                   <img src="/img/business.png" />
                   <p className="text-center font-medium text-2xl ">

@@ -7,10 +7,6 @@ import {
 
 export const navlinks = [
   {
-    name: "Home",
-    url: "/",
-  },
-  {
     name: "Researchers",
     url: "/researchers",
   },

@@ -87,7 +87,9 @@ export default function Footer() {
               It’s a free to signup and you could be applying to your first
               study in under 5 minutes.
             </p>
-            <button className="shadow-blue bg-[#4ABEFF] text-white sm:px-6 px-4  sm:py-2 py-1 text-[16px] sm:text-[20px] font-bold rounded-full transition-all ease-in-out duration-150 hover:-translate-y-1">
+            <button onClick={()=>{
+              router.push("/signup")
+            }} className="shadow-blue bg-[#4ABEFF] text-white sm:px-6 px-4  sm:py-2 py-1 text-[16px] sm:text-[20px] font-bold rounded-full transition-all ease-in-out duration-150 hover:-translate-y-1">
               Sign Up Free
             </button>
             <div className="mt-8 sm:mt-10 justify-center sm:justify-start hidden md:flex">

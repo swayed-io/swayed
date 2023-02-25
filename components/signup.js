@@ -48,13 +48,17 @@ export default function Signup({ signup, auth }) {
     }
 
     if (validate) {
-      signup.signupWithEmail(person);
+      console.log(person)
+     signup.signupWithEmail(person);
     } else {
       cogoToast.warn(message);
       validate = true;
       setDisable(false);
     }
   };
+
+  
+
   return (
     <div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8 ">
       <div className="mx-auto max-w-lg">

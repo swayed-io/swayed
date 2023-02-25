@@ -19,6 +19,7 @@ export default function Dashboard({ authService }) {
   const [projectsPerPage] = useState(5);
   const [skip, setSkip] = useState(false);
 
+
   // Filter projects
   const filtredProjects = projects.filter(project => {
     if (project.type === "ShareProject")
@@ -27,14 +28,34 @@ export default function Dashboard({ authService }) {
       return project.value.title.toLowerCase().includes(search.toLowerCase())
   }
   );
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [search]);
+
   // Get current posts
-  const indexOfLastProject = currentPage * projectsPerPage;
-  const indexOfFirstProject = indexOfLastProject - projectsPerPage;
+  const indexOfLastProject = Math.min(
+    currentPage * projectsPerPage,
+    filtredProjects.length
+  );
+  const indexOfFirstProject = Math.min(
+    indexOfLastProject - projectsPerPage,
+    filtredProjects.length
+  );
   const currentProject = filtredProjects.slice(indexOfFirstProject, indexOfLastProject);
 
   // Change page
-  const paginateFront = () => setCurrentPage(currentPage + 1);
-  const paginateBack = () => setCurrentPage(currentPage - 1);
+  const paginateFront = () => {
+    const maxPage = Math.ceil(filtredProjects.length / projectsPerPage);
+    console.log(currentPage)
+    if (currentPage < maxPage) setCurrentPage(currentPage + 1);
+  };
+
+  const paginateBack = () => {
+    if (currentPage > 1) setCurrentPage(currentPage - 1);
+  };
+
+  console.log(currentPage)
 
   useEffect(() => {
     setLoading(true)
@@ -68,7 +89,7 @@ export default function Dashboard({ authService }) {
       const participant = await getParticipantsByUserID(user.uid);
       setParticipant(participant);
     })();
-  }, [user.uid]);
+  }, [user?.uid]);
 
 
   const handleSkip = () => {

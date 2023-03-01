@@ -4,6 +4,8 @@ import cogoToast from "cogo-toast";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
+import linkedin from 'react-linkedin-login-oauth2/assets/linkedin.png';
+import { LinkedIn } from 'react-linkedin-login-oauth2';
 export default function Signup({ signup, auth }) {
   const [person, setPerson] = useState({
     email: "",
@@ -60,19 +62,19 @@ export default function Signup({ signup, auth }) {
   
 
   return (
-    <div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8 ">
-      <div className="mx-auto max-w-lg">
+    <div className="max-w-screen-xl px-4 py-16 mx-auto sm:px-6 lg:px-8 ">
+      <div className="max-w-lg mx-auto">
         <h1 className="text-center text-2xl font-bold text-[#413F9D] sm:text-3xl">
           Start Earning Today!
         </h1>
-        <h3 className="text-center text-xl font-semibold text-black sm:text-2xl"></h3>
+        <h3 className="text-xl font-semibold text-center text-black sm:text-2xl"></h3>
         <div className={`mt-6 mb-0 space-y-4 rounded-lg p-8  ${form.visible}`}>
           <div className="flex flex-row space-x-8">
             <div className="w-1/2 hover:-translate-y-1 hover:scale-110">
               <Link href="/">
                 <button>
                   <img src="/img/business.png" />
-                  <p className="text-center font-medium text-2xl ">
+                  <p className="text-2xl font-medium text-center ">
                     Researcher
                   </p>
                 </button>
@@ -81,7 +83,7 @@ export default function Signup({ signup, auth }) {
             <div className="w-1/2 hover:-translate-y-1 hover:scale-110">
               <button onClick={chooseRole}>
                 <img src="/img/worker.png" />
-                <p className="text-center font-medium text-2xl ">Participant</p>
+                <p className="text-2xl font-medium text-center ">Participant</p>
               </button>
             </div>
           </div>
@@ -105,7 +107,7 @@ export default function Signup({ signup, auth }) {
                 name="email"
                 value={person.email}
                 onChange={handleChange}
-                className="w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm"
+                className="w-full p-4 pr-12 text-sm border-gray-200 rounded-lg shadow-sm"
                 placeholder="Enter email"
               />
             </div>
@@ -125,7 +127,7 @@ export default function Signup({ signup, auth }) {
                 name="password"
                 value={person.password}
                 onChange={handleChange}
-                className="w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm"
+                className="w-full p-4 pr-12 text-sm border-gray-200 rounded-lg shadow-sm"
                 placeholder="Enter your Password"
               />
             </div>
@@ -145,7 +147,7 @@ export default function Signup({ signup, auth }) {
                 name="repassword"
                 value={person.repassword}
                 onChange={handleChange}
-                className="w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm"
+                className="w-full p-4 pr-12 text-sm border-gray-200 rounded-lg shadow-sm"
                 placeholder="Repeat your Password"
               />
             </div>
@@ -154,7 +156,7 @@ export default function Signup({ signup, auth }) {
           <button
             onClick={saveinfoEmail}
             disabled={disable}
-            className="block w-full rounded-lg bg-secondary-100 px-5 py-3 transition ease-in-out delay-150 active:bg-green-500  hover:-translate-y-1 hover:scale-110 text-sm font-semibold text-white   disabled:opacity-50"
+            className="block w-full px-5 py-3 text-sm font-semibold text-white transition ease-in-out delay-150 rounded-lg bg-secondary-100 active:bg-green-500 hover:-translate-y-1 hover:scale-110 disabled:opacity-50"
           >
             Sign Up
           </button>
@@ -163,9 +165,9 @@ export default function Signup({ signup, auth }) {
             onClick={() => {
               signup.loginWithGoogle();
             }}
-            className="border-2 border-black w-full mx-auto rounded-lg items-center bg-white px-5 py-3 transition ease-in-out delay-150 active:bg-black  hover:-translate-y-1 hover:scale-110 text-sm font-semibold text-black   disabled:opacity-50"
+            className="items-center w-full px-5 py-3 mx-auto text-sm font-semibold text-black transition ease-in-out delay-150 bg-white border-2 border-black rounded-lg active:bg-black hover:-translate-y-1 hover:scale-110 disabled:opacity-50"
           >
-            <span className="justify-center flex items-center mx-auto">
+            <span className="flex items-center justify-center mx-auto">
               <svg
                 className="justify-center "
                 width="24"
@@ -189,7 +191,7 @@ export default function Signup({ signup, auth }) {
             }}
             className=" w-full mx-auto rounded-lg items-center bg-[#3b5998] px-5 py-3 transition ease-in-out delay-150   hover:-translate-y-1 hover:scale-110 text-sm font-semibold text-white   disabled:opacity-50"
           >
-            <span className="justify-center flex items-center mx-auto">
+            <span className="flex items-center justify-center mx-auto">
               <svg
                 className="justify-center"
                 width="24"
@@ -207,14 +209,33 @@ export default function Signup({ signup, auth }) {
             </span>
           </button>
           {/* signup with linkedin */}
-          <button
+          <LinkedIn
+      clientId="861qb9wf2l994n"
+      redirectUri={`${window.location.origin}/linkedin`}
+      onSuccess={(code) => {
+        console.log(code);
+      }}
+      onError={(error) => {
+        console.log(error);
+      }}
+    >
+      {({ linkedInLogin }) => (
+        <img
+          onClick={linkedInLogin}
+          src={linkedin}
+          alt="Sign in with Linked In"
+          style={{ maxWidth: '180px', cursor: 'pointer' }}
+        />
+      )}
+    </LinkedIn>
+          {/* <button
             disabled={disable}
             onClick={() => {
               signup.loginWitLinkedin();
             }}
             className=" w-full mx-auto rounded-lg items-center bg-[#0077b5] px-5 py-3 transition ease-in-out delay-150   hover:-translate-y-1 hover:scale-110 text-sm font-semibold text-white   disabled:opacity-50"
           >
-            <span className="justify-center flex items-center mx-auto">
+            <span className="flex items-center justify-center mx-auto">
               <svg
                 className="justify-center"
                 width="24"
@@ -230,22 +251,22 @@ export default function Signup({ signup, auth }) {
               </svg>
               Sign in with LinkedIn{" "}
             </span>
-          </button>
+          </button> */}
           {/* end linked in */}
-          <p className="text-center sm:text-medium text-sm">
+          <p className="text-sm text-center sm:text-medium">
             By Clicking &apos;Sign Up&apos; I agree to the User interviews{" "}
             <Link href="/terms">
-              <a className="text-blue-600  sm:text-medium text-sm">
+              <a className="text-sm text-blue-600 sm:text-medium">
                 Terms of service
               </a>
             </Link>
             ,
-            <a className="text-blue-600 sm:text-medium text-sm">
+            <a className="text-sm text-blue-600 sm:text-medium">
               <Link href="/privacy"> Privacy Policy</Link>
             </a>
             , and{" "}
             <Link href="/cookies">
-              <a className="text-blue-600 sm:text-medium text-sm">
+              <a className="text-sm text-blue-600 sm:text-medium">
                 Cookies Policy
               </a>
             </Link>

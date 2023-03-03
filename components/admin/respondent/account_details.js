@@ -38,8 +38,8 @@ export default function AccountDetails({ authService }) {
   return (
     <div>
       <div className="bg-white rounded-md p-4">
-        <div className="flex flex-row">
-          <div className="w-1/2 p-4">
+        <div className="flex sm:flex-row flex-col">
+          <div className="sm:w-1/2 w-full p-4">
             {isEditing ? (
               <div className="flex flex-row mt-4 items-center">
                 <div className="w-1/2">
@@ -92,7 +92,7 @@ export default function AccountDetails({ authService }) {
               </div>
             )}
           </div>
-          <div className="w-1/2 p-4">
+          <div className="sm:w-1/2 w-full p-4">
             {isEditing ? (
               <div className="flex flex-row mt-4 items-center">
                 <div className="w-1/2">
@@ -167,8 +167,8 @@ export default function AccountDetails({ authService }) {
         </div>
       </div>
       <div className="mt-4 rounded-md bg-[#FFD9D9] flex flex-row  p-4">
-        <div className=" flex flex-row items-center">
-          <div className="flex flex-row items-center">
+        <div className=" flex sm:flex-row flex-col items-center">
+          <div className="flex sm:flex-row flex-col items-center">
             <img src="/img/icons/account_details/danger_icon.svg" />
             <p className="ml-4 text-base font-medium">
               Please be cautious this operation is not reversible. You will have
@@ -177,7 +177,7 @@ export default function AccountDetails({ authService }) {
             </p>
           </div>
 
-          <div className="ml-16">
+          <div className="sm:ml-16 ml-0">
             <button
               onClick={() => authService.disableUser()}
               className=" w-64  items-center px-6 py-2  font-medium bg-[#FF5252]  text-white rounded-full border-0  focus:outline-none hover:bg-gray-200  sm:ml-0   text-base  transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110">

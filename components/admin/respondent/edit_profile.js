@@ -13,8 +13,9 @@ export default function EditProfile({ authService }) {
           <p className="font-semibold text-2xl mt-2 mx-auto">
             {user.displayName}
           </p>
+            <button className="ml-64"></button>
         </div>
-        <div className="grid grid-cols-3 gap-4 mt-8">
+        <div className="grid sm:grid-cols-3 grid-cols-1 gap-4 mt-8">
           <div className="bg-background-100 p-4 flex flex-col rounded-md hover:text-secondary-100 cursor-pointer">
             <img
               src="/img/icons/editprofile/contact_icon.svg"

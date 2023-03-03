@@ -6,6 +6,7 @@ import Dashboard from "../../../../components/admin/respondent/dashboard";
 import Listings from "../../../../components/admin/respondent/listings";
 import Cashout from "../../../../components/admin/respondent/cashout";
 import Earn from "../../../../components/admin/respondent/earn";
+import Surveys from "../../../../components/admin/respondent/surveys";
 import SocialA from "../../../../components/admin/respondent/social_accounts";
 import EditProfile from "../../../../components/admin/respondent/edit_profile";
 import ChangePassword from "../../../../components/admin/respondent/change_password";
@@ -23,6 +24,9 @@ function DashboardPage() {
   }
   if (router.asPath.includes("/admin/respondent/dashboard#earn")) {
     return <div className="p-4 ">{<Earn />}</div>;
+  }
+  if (router.asPath.includes("/admin/respondent/dashboard#surveys")) {
+    return <div className="p-4 ">{<Surveys />}</div>;
   }
   if (router.asPath.includes("/admin/respondent/dashboard#cashout")) {
     return <div className="p-4 ">{<Cashout />}</div>;

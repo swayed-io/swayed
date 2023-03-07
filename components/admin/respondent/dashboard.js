@@ -658,7 +658,7 @@ export default function Dashboard({ authService }) {
         </div> */}
       </div>
       <div className="sm:w-1/4 w-full">
-        <div>
+        <div className="hidden">
           <div className="bg-white rounded-lg  py-4">
             <p className="text-base font-semibold ml-4">
               Welcome to Shape the
@@ -679,7 +679,7 @@ export default function Dashboard({ authService }) {
             </div>
           </div>
         </div>
-        <div className="mt-4">
+        <div className="mt-4 hidden">
           <div className="bg-white rounded-lg  py-4">
             <p className="text-base font-semibold ml-4">
               Share your referral link

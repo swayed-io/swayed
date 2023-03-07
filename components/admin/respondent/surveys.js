@@ -7,7 +7,7 @@ export default function Surveys() {
         <div className="">
             <div>
                 <div id="listings" className="sm:p-4 p-4  bg-background-100 overflow-y-auto overflow-x-hidden">
-                    <div className="mb-4 sm:p-6 px-2 py-4 flex flex-row  bg-[#DFEEFD] rounded-lg ">
+                    <div className="mb-4 sm:p-6 px-2 py-4 flex flex-row  bg-[#DFEEFD] rounded-[20px] ">
                         <div className="w-1/2 flex flex-col">
 
 
@@ -22,7 +22,7 @@ export default function Surveys() {
 
                     </div>
                     
-                    <div className=" bg-white sm:px-16 px-8 py-8 rounded-lg shadow-xl">
+                    <div className=" bg-white sm:px-16 px-8 py-8 rounded-[20px] shadow-[0_10px_20px_rgba(0,0,0,0.25)]">
                         <div className="flex flex-row items-center gap-2 mb-4">
                             <img src="/img/icons/earn/star_icon.svg"/>
                             <p className="text-base font-semibold">Featured Offers</p>

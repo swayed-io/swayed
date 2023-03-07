@@ -4,11 +4,11 @@ const Values = () => {
     return (
         <>
         <div className="sm:p-16 p-8 ff-Roboto">
-            <div className="bg-gradient-to-tr from-[#35A2B0] to-[#4D67F0] rounded-2xl sm:p-8 p-4">
+            <div className="bg-gradient-to-tr from-[#35A2B0] to-[#4D67F0] rounded-[25px] shadow-[0_12px_20px_rgba(0,0,0,0.25)] sm:p-8 p-4">
                 <div>
                     <h3 className="lg:text-[65px] text-center md:text-[45px] sm:text-[35px] text-[27px] text-white font-bold  leading-[110%] text-shadow pt-2 ">Our core <span className="text-[#09B2E8]">values</span></h3>
                 </div>
-                <div className="text-white sm:text-xl text-sm font-normal px-16 py-8 text-justify">
+                <div className="text-white sm:text-xl text-sm font-normal px-4 py-8 text-justify">
                     <p>
                     <span>1 . Passion for Excellence</span><br/>
                     <ul className="list-disc p-4">

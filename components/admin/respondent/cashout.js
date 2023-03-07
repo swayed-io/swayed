@@ -22,15 +22,18 @@ export default function Cashout() {
     return (
         <div>
             <div id="listings" className="sm:p-4 p-4 bg-background-100">
-                <div className="mb-4 py-4 px-4 flex flex-row gap-x-6 bg-[#DFEEFD] rounded-lg items-center">
-                    <img src="/img/icons/cashout/alert_icon.svg"/>
-                    <span className="text-base font-medium">You must have to earn $2.00 before being able to withdraw.</span>
+                <div className="mb-4 py-4 px-4 flex flex-col gap-x-6 bg-[#DFEEFD] rounded-lg items-center">
+                    <div className="flex flex-row">
 
+                    <img src="/img/icons/cashout/alert_icon.svg"/>
+                    <span className="ml-2 text-base font-medium">You must have to earn $2.00 before being able to withdraw.</span>
+                    </div>
+                    <button className="sm:hidden ml-64"></button>
                 </div>
                 <div className="mb-4">
                     <span className="text-base font-semibold">Withdraw cash using</span>
                 </div>
-                <div className="grid grid-cols-4 gap-x-6">
+                <div className="grid sm:grid-cols-4 grid-cols-1 sm:gap-x-6 gap-y-4">
                     <div className="flex bg-white p-8 rounded-lg"
                         onClick={openModal}>
                         <div className="mx-auto flex flex-col">
@@ -38,6 +41,7 @@ export default function Cashout() {
                             <p className="mt-4 text-lg font-semibold">Paypal</p>
 
                         </div>
+                        
                     </div>
                     <Transition appear
                         show={isOpen}
@@ -83,6 +87,7 @@ export default function Cashout() {
                                 </div>
                             </div>
                         </Dialog>
+                        
                     </Transition>
 
                     <div className="flex bg-white p-8 rounded-lg"
@@ -92,6 +97,7 @@ export default function Cashout() {
                             <p className="mt-4 text-lg font-semibold">Bitcoin</p>
 
                         </div>
+                        
                     </div>
                     <Transition appear
                         show={isOpen2}
@@ -121,7 +127,7 @@ export default function Cashout() {
 
                                             <div className="  py-6 px-12 ">
                                                 <p className="text-base font-medium text-black text-center">You don’t have enough balance!</p>
-                                                    <button className="w-36 px-4 py-2 font-medium bg-gradient-to-tr from-primary-100 to-secondary-100 text-white rounded-full border-0  focus:outline-none hover:bg-gray-200  sm:ml-0 ml-64  text-sm mt-8 transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110">
+                                                    <button className="w-36 px-4 py-2 font-medium bg-gradient-to-tr from-primary-100 to-secondary-100 text-white rounded-full border-0  focus:outline-none hover:bg-gray-200  sm:ml-0   text-sm mt-8 transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110">
                                                         Close
                                                     </button>
                                                

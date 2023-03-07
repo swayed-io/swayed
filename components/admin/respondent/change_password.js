@@ -35,7 +35,8 @@ export default function ChangePassword({ authService }) {
   return (
     <div>
       <div className="bg-white p-8">
-        <div className="flex flex-col p-4 mx-auto w-96">
+        <div className="flex flex-col p-4 mx-auto sm:w-96 w-full">
+        <button className="ml-64"></button>
           <div>
             <div className="mb-2">
               <div className="relative">
@@ -150,7 +151,7 @@ export default function ChangePassword({ authService }) {
             <div>
               <button
                 onClick={saveNewPassword}
-                className="px-4 py-2 w-full font-medium bg-gradient-to-tr from-primary-100 to-secondary-100 text-white rounded-full border-0  focus:outline-none hover:bg-gray-200  sm:ml-0 ml-64  text-sm mt-8 transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110"
+                className="px-4 py-2 w-full font-medium bg-gradient-to-tr from-primary-100 to-secondary-100 text-white rounded-full border-0  focus:outline-none hover:bg-gray-200  sm:ml-0   text-sm mt-8 transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110"
               >
                 Update
               </button>

@@ -1,19 +1,48 @@
 import Link from "next/link";
-import useAuth from "../../../hook/auth";
-export default function Navbar() {
-  const { logout } = useAuth()
+import React, { useEffect, useState } from "react";
 
+
+
+import { useRouter } from "next/router";
+import useAuth from "../../../hook/auth";
+
+const Sidebar = ({ isSidebarOpen, setSidebarOpen }) => {
+  const router = useRouter();
+  const [currentUser, setCurrentUser] = useState(null);
+  const { user } = useAuth()
+
+  useEffect(() => {
+    if (user) {
+      setCurrentUser(user.reloadUserInfo)
+    }
+  }, [user])
   return (
-    <div className="">
-      <div>
-        <div className="hidden sm:flex flex-row  w-64  bg-gradient-to-b from-primary-100  to-secondary-100">
-          <nav className="from-primary-100 to-secondary-100    flex flex-col h-full ">
-            <div className="mt-10 mb-10">
-              <Link href="/" passHref>
-                <img src="/img/logo_white.png" className=" w-20 mb-3 ml-10" />
-              </Link>
-              <div className="mt-10 p-4 ">
-                <ul className="w-56">
+    <>
+      {isSidebarOpen && (
+        <div
+          onClick={() => setSidebarOpen((pre) => !pre)}
+          className="z-30 fixed right-0 w-full h-full bg-black opacity-20 top-0  transition-all duration-300 ease-in"
+        ></div>
+      )}
+      <div
+        className={`h-screen max-h-full flex flex-col justify-   shadow-lg z-40 w-full p-3 max-w-[240px] fixed top-0 transition-all duration-200 ease-in  xl:hidden ${
+          isSidebarOpen ? "right-0  " : "-right-[240px]"
+        }`}
+      >
+           <ul className="w-56 bg-gradient-to-b from-primary-100   to-secondary-100 rounded-lg z-30 fixed   h-full    ">
+        <div className="flex flex-row p-4">
+          <div className="">
+            <img className="object-cover w-10 h-10 rounded-lg" src={currentUser?.photoUrl ? currentUser.photoUrl : "/img/profile_icon.svg"} />
+
+          </div>
+          <div className="ml-2">
+          <p className="text-sm text-white font-bold text-start ">{currentUser?.displayName ? currentUser?.displayName : "_"}</p>
+          <p className="text-xs text-white opacity-40 font-regular text-start ">
+                      3 screeners left
+                    </p>
+          </div>
+
+        </div>
                   <li className="mb-4 active:bg-secondary-100 rounded-xl p-4 opacity-60 active:opacity-100 text-opacity-60 active:text-opacity-100  ">
                     <Link href="#projects">
                       <a className="flex flex-row ">
@@ -172,21 +201,39 @@ export default function Navbar() {
                     </Link>
                   </li>
                 </ul>
-              </div>
-            </div>
-            <li className="ml-4 object-bottom  rounded-xl p-4 opacity-60  text-opacity-60   ">
-              <Link href="#">
-                <a className="flex flex-row ">
-                  <span>
-                    <img src="/img/logout_icon.svg" className="w-5 h-5 " />
-                  </span>
-                  <p className="ml-4 text-white font-medium text-sm" onClick={logout}>Logout</p>
-                </a>
-              </Link>
-            </li>
-          </nav>
-        </div>
+        <span
+          onClick={() => setSidebarOpen((pre) => !pre)}
+          className="absolute top-2 right-2"
+        >
+          
+        </span>
+
+     
       </div>
-    </div>
+    </>
   );
-}
+};
+
+export default Sidebar;
+
+export const CrossIcon = () => {
+  return (
+    <>
+      <svg
+        width="30"
+        height="30"
+        viewBox="0 0 16 16"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M11.25 4.75L4.75 11.25M4.75 4.75L11.25 11.25"
+          stroke="#000000"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </svg>
+    </>
+  );
+};

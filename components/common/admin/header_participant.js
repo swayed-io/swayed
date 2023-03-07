@@ -3,9 +3,11 @@ import AnchorLink from "react-anchor-link-smooth-scroll";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import useAuth from "../../../hook/auth";
+import { MenuIcon } from "./Icons";
 
-export default function HeaderParticipant() {
+const HeaderParticipant = ({ setSidebarOpen }) => {
   const [currentUser, setCurrentUser] = useState(null);
+
   const { user } = useAuth()
 
   useEffect(() => {
@@ -18,15 +20,15 @@ export default function HeaderParticipant() {
   const router = useRouter();
   return (
     <div className=" top-0   ">
-      <nav className="w-full ">
+      <nav className="w-full "  onClick={() => setNavbarOpen(!navbarOpen)}>
         <div className="py-5 md:py-2  mx-auto px-6  flex items-center justify-between">
           <p className="text-lg font-semibold">Dashboard</p>
           <div>
             <button
-              onClick={() => setNavbarOpen(!navbarOpen)}
+              onClick={() => setSidebarOpen(true)}
               className="sm:inline md:hidden "
             >
-              <img src="/img/hamburguer_icon.svg" className="ml-48" />
+              <MenuIcon />
             </button>
             <div id="menu" className="md:inline sm:inline lg:inline hidden">
               <div className="flex flex-row">
@@ -53,15 +55,15 @@ export default function HeaderParticipant() {
           </div>
         </div>
       </nav>
-      <div className={!navbarOpen ? "hidden" : " inline"}>
-        <nav className=" flex flex-col   text-base sm:hidden bg-secondary py-2 shadow-md border-b-2 border-gray-700   ">
-          <p>{user?.email}</p>
-          <img src="/img/profile_icon.svg" />
-        </nav>
+    
+      <div >
+   
       </div>
     </div>
   );
 }
+
+export default HeaderParticipant;
 
 {
   /*
@@ -91,3 +93,5 @@ export default function HeaderParticipant() {
     </div>
     */
 }
+
+

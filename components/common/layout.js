@@ -4,11 +4,15 @@ import AuthProvider from "../../hook/auth";
 import { useRouter } from "next/router";
 import HeaderAdmin from "./admin/header";
 import HeaderParticipant from "./admin/header_participant";
+import Sidebar from "./admin/Sidebar";
 import Navbar from "./admin/navbar";
 import AuthService from "../../lib/auth"
+import React, { useEffect, useState } from "react";
 
 
 function Layout(props) {
+
+  const [isSidebarOpen, setSidebarOpen] = useState(false);
 
   const router = useRouter();
   if (!router.pathname.includes("/admin")) {
@@ -27,7 +31,8 @@ function Layout(props) {
             <Navbar />
           </div>
           <div className="w-full">
-            <HeaderParticipant />
+            <HeaderParticipant setSidebarOpen={setSidebarOpen} />
+            <Sidebar setSidebarOpen={setSidebarOpen} isSidebarOpen={isSidebarOpen} />
             <main className="overflow-y-hidden">{props.children}</main>
           </div>
           <div></div>

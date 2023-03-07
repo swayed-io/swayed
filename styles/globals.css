@@ -78,6 +78,13 @@
   background-position: center;
   background-repeat: no-repeat;
 }
+.hero-bg-img-aboutus {
+  background-image: url("/img/hero_aboutus.png");
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
 /* @media (max-width: 640px) {
   .hero-bg-img {
     background-size: cover;

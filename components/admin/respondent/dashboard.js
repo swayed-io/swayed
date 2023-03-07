@@ -107,8 +107,8 @@ export default function Dashboard({ authService }) {
   // console.log(projects)
 
   return (
-    <div className="flex flex-row">
-      <div id="listings" className="sm:p-2 p-4 bg-background-100 w-3/4">
+    <div className="flex sm:flex-row flex-col-reverse">
+      <div id="listings" className="sm:p-2 p-4 bg-background-100 sm:w-3/4 w-full">
         <div className={skip ? "hidden" : ""}>
           <div className="flex flex-row justify-between">
             <p className="font-semibold text-2xl">
@@ -292,14 +292,14 @@ export default function Dashboard({ authService }) {
             </Link>
           </div>
         </div>
-        <div className="py-4  flex flex-row gap-x-6 justify-between">
+        <div className="py-4  flex sm:flex-row flex-col gap-x-6 justify-between">
           <div class="relative flex-1">
             <input class="rounded-full text-left font-medium text-sm w-full flex flex-row gap-2 p-3 pl-10 " placeholder="Search projects by keyword" onChange={(e) => setSearch(e.target.value)} />
             <img class="absolute right-0 top-0 bottom-0" src="/img/icons/respondent_d/search_icon.svg" />
           </div>
 
 
-          <div className="flex">
+          <div className="flex sm:mt-0 mt-2">
             <button className="rounded-full bg-white text-center py-2 px-4 font-medium text-sm     flex flex-row gap-2 items-center ">
               <img
                 src="/img/icons/respondent_d/filter_icon.svg"
@@ -657,7 +657,7 @@ export default function Dashboard({ authService }) {
           </div>
         </div> */}
       </div>
-      <div className="w-1/4">
+      <div className="sm:w-1/4 w-full">
         <div>
           <div className="bg-white rounded-lg  py-4">
             <p className="text-base font-semibold ml-4">

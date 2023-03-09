@@ -15,7 +15,7 @@ const Values = () => {
                         <li>At Swayed.io, we are passionate about what we do and are always looking for ways to improve.</li>
                         <li>We are committed to continuous learning and sharing knowledge, always looking for ways to better ourselves and our product.</li>
                         <li>At Swayed.io, we are passionate about what we do and are always looking for ways to improve.</li>
-                        <li>We have a strong drive for excellence, and we work tirelessly to exceed our own and our customers' expectations.</li>
+                        <li>We have a strong drive for excellence, and we work tirelessly to exceed our own and our customers`&apos; expectations.</li>
                         <li>We are not afraid to fail, we see it as a learning opportunity and as a stepping stone to achieve greatness.</li>
                     </ul>
                     </p>
@@ -26,9 +26,9 @@ const Values = () => {
     
 <li>We are dedicated to providing the best possible experience for our customers.</li>
   <li>We prioritize their needs and are constantly looking for ways to improve our products and support.</li>
-  <li>We take the time to understand our customers' needs and remain curious about their experiences, regularly conducting research to gain insight into the end-user experience.</li>
+  <li>We take the time to understand our customers`&apos; needs and remain curious about their experiences, regularly conducting research to gain insight into the end-user experience.</li>
   <li>We amplify the voice of the customer and use their feedback to help them achieve their goals, ensuring that their satisfaction is at the forefront of everything we do.</li>
-  <li>Our passion for excellence drives us to go above and beyond to meet and exceed our customers' expectations.</li>
+  <li>Our passion for excellence drives us to go above and beyond to meet and exceed our customers`&apos; expectations.</li>
 </ul>
 </p>
 <span>3. Collaborative Problem-Solving</span><br/>

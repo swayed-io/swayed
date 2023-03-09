@@ -54,7 +54,7 @@ const Team = () => {
                 
               >
                 <h4 className="ff-Roboto mb-3 sm:text-[16px] text-[14px] font-medium text-black leading-[130%] sm:leading-[170%]">
-                “Working at Swayed is a pleasure! The flexible work culture allows me to balance my work and personal life effectively, and I'm proud to be part of an organization with a great mission.”
+                “Working at Swayed is a pleasure! The flexible work culture allows me to balance my work and personal life effectively, and I`&apos;m proud to be part of an organization with a great mission.”
                 </h4>
                 <div className="flex items-center justify-center">
                   <img

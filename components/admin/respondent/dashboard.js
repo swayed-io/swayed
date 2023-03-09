@@ -293,9 +293,9 @@ export default function Dashboard({ authService }) {
           </div>
         </div>
         <div className="py-4  flex sm:flex-row flex-col gap-x-6 justify-between">
-          <div class="relative flex-1">
-            <input class="rounded-full text-left font-medium text-sm w-full flex flex-row gap-2 p-3 pl-10 " placeholder="Search projects by keyword" onChange={(e) => setSearch(e.target.value)} />
-            <img class="absolute right-0 top-0 bottom-0" src="/img/icons/respondent_d/search_icon.svg" />
+          <div className="relative flex-1">
+            <input className="rounded-full text-left font-medium text-sm w-full flex flex-row gap-2 p-3 pl-10 " placeholder="Search projects by keyword" onChange={(e) => setSearch(e.target.value)} />
+            <img className="absolute right-0 top-0 bottom-0" src="/img/icons/respondent_d/search_icon.svg" />
           </div>
 
 

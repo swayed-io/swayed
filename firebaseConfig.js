@@ -35,6 +35,26 @@ if (!getApps.length) {
   }
 }
 export const db = getFirestore(app);
+
+export const createUser = async (user) => {
+  if (!user) return;
+  const db = getFirestore(app);
+  const userRef = db.collection("transaction").doc(user);
+  const snapshot = await userRef.get();
+  if (!snapshot.exists) {   
+    try {
+      await userRef.set({
+        user,
+        createdAt: new Date(),
+      });
+    } catch (error) {
+      console.log("Error creating user", error);
+    }
+  }
+  //return getUserDocument(user.uid);
+};
+
+
 export const getProdApp = () => {
   return app;
 };

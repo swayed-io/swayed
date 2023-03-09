@@ -1,0 +1,30 @@
+{
+    "id": "pi_3MjodqJBuTSfvsjA17czziEw",
+    "object": "payment_intent",
+    "amount": 500,
+    "amount_details": {
+        "tip": {}
+    },
+    "automatic_payment_methods": null,
+    "canceled_at": null,
+    "cancellation_reason": null,
+    "capture_method": "automatic",
+    "client_secret": "pi_3MjodqJBuTSfvsjA17czziEw_secret_izOWQEuyMbSBIuiCnaiUtVLa0",
+    "confirmation_method": "automatic",
+    "created": 1678388202,
+    "currency": "usd",
+    "description": null,
+    "last_payment_error": null,
+    "livemode": false,
+    "next_action": null,
+    "payment_method": "pm_1Mjoe3JBuTSfvsjAeQVkDvjm",
+    "payment_method_types": [
+        "card"
+    ],
+    "processing": null,
+    "receipt_email": "ali@ibne.com",
+    "setup_future_usage": null,
+    "shipping": null,
+    "source": null,
+    "status": "succeeded"
+}

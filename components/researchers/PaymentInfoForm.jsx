@@ -2,6 +2,11 @@ import React from "react";
 import cogoToast from "cogo-toast";
 import { useRouter } from "next/router";
 import { checkout } from "../../checkout";
+import { createUser } from "../../firebaseConfig";
+import StripeCheckoutForm from "../paymets/StripeCheckoutForm";
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
+import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 const PaymentInfoForm = ({ page, setPage, formData, setFormData, saveShareProject }) => {
   const router = useRouter();
   const plan_cost = router.query.plan_cost;
@@ -10,6 +15,21 @@ const PaymentInfoForm = ({ page, setPage, formData, setFormData, saveShareProjec
     payment_method: "",
     plan_cost: "",
   });
+
+  const stripePromise = loadStripe("pk_test_51MeNjlBnUuL4pMAm5CZ3xP8IqqdGPCYCLRSip0MHwmMXVvHKLqmQsGTnaZabS2EYtQeB27TUKiqAkx1q4RFgpPXL0028NJAQiy");
+
+  console.log(formData);
+
+  const handlePayment = () => {
+    //checkout({lineItems: [{price: "price_1MeNuFBnUuL4pMAmFYLCJiHR",quantity: 1,},],})
+    if (formData?.payment_method === "credit_card") {
+      router.push("/payment");
+    }
+    if (formData?.payment_method === "paypal") {
+      router.push("/paypal");
+    }
+  };
+
   return (
     <div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8 ">
       <div className="mx-auto max-w-lg">
@@ -27,8 +47,8 @@ const PaymentInfoForm = ({ page, setPage, formData, setFormData, saveShareProjec
             <input
               type="radio"
               name="payment_method"
-              value="credit card"
-              checked={formData.payment_method === "credit card"}
+              value="credit_card"
+              checked={formData.payment_method === "credit_card"}
               onChange={(e) => {
                 if (e.target.checked) {
                   setFormData({ ...formData, payment_method: e.target.value, plan_cost: parseInt(plan_cost) });
@@ -101,24 +121,46 @@ const PaymentInfoForm = ({ page, setPage, formData, setFormData, saveShareProjec
       </div>
 
       <div className="my-2 w-full">
-
-        <button
-        className=" w-1/2 mx-auto block rounded-lg bg-white px-5 py-3 transition ease-in-out delay-150 active:bg-green-500  hover:-translate-y-1 hover:scale-110 text-sm font-semibold text-black  disabled:opacity-50 border-2 border-gray-200"
-          onClick={() =>
-            checkout({
-              lineItems: [
-                {
-                  price: "price_1MeNuFBnUuL4pMAmFYLCJiHR",
-                  quantity: 1,
-                },
-              ],
-            })
-          }
-        >
-         Pay
+        <button className=" w-1/2 mx-auto block rounded-lg bg-white px-5 py-3 transition ease-in-out delay-150 active:bg-green-500  hover:-translate-y-1 hover:scale-110 text-sm font-semibold text-black  disabled:opacity-50 border-2 border-gray-200" onClick={handlePayment}>
+          Pay
         </button>
-
       </div>
+
+      {formData?.payment_method === "credit_card" && (
+        <div className="w-1/2 bg-slate-300 text-center mx-auto mt-10 p-9">
+          <Elements stripe={stripePromise}>
+            <StripeCheckoutForm email={formData?.email} price={formData?.plan_cost} />
+          </Elements>
+        </div>
+      )}
+
+      {formData?.payment_method === "paypal" && (
+        <div className="w-1/2 bg-slate-300 text-center mx-auto mt-10 p-9">
+          <PayPalScriptProvider options={{ "client-id": "test" }}>
+
+            
+            <PayPalButtons createOrder={(data, actions) => {
+                    return actions.order.create({
+                        purchase_units: [
+                            {
+                                amount: {
+                                    value: "35.00",
+                                },
+                            },
+                        ],
+                    });
+                }}
+                onApprove={(data, actions) => {
+                    return actions.order.capture().then((details) => {
+                        const name = details.payer.name.given_name;
+                        alert(`Transaction completed by ${name}`);
+                    });
+                }} />
+
+
+          </PayPalScriptProvider>
+        </div>
+      )}
     </div>
   );
 };

@@ -31,7 +31,7 @@ const HeroAboutUS = () => {
         </div>
         <div className="smt:mt-8 mt-2 p-8 ">
             <h3 className="text-center font-bold sm:text-4xl text-xl  text-shadow text-[#2F2F2F] ff-Roboto">Empowering User Insights with Diversity and Efficiency: Our<br/> Mission to Elevate Your Research Experience</h3>
-            <p className="text-center font-medium sm:text-3xl text-lg text-black text-opacity-75 sm:mt-4 mt-2 ff-Roboto">At our company, we're on a mission to make the world of user insights<br/> more diverse and efficient. These two solutions alone can take your <br/>projects to the next level. Therefore, for us, our participants happiness is <br/>our motivation and we provide our community with high-quality, <br/>reputable projects. So whether you're a researcher, team, or participant,<br/> we've got you covered with the most efficient solutions around!</p>
+            <p className="text-center font-medium sm:text-3xl text-lg text-black text-opacity-75 sm:mt-4 mt-2 ff-Roboto">At our company, we`&apos;re on a mission to make the world of user insights<br/> more diverse and efficient. These two solutions alone can take your <br/>projects to the next level. Therefore, for us, our participants happiness is <br/>our motivation and we provide our community with high-quality, <br/>reputable projects. So whether you`&apos;re a researcher, team, or participant,<br/> we`&apos;ve got you covered with the most efficient solutions around!</p>
         </div>
       </div>
     </>

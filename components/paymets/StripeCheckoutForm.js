@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import { db } from "../../firebaseConfig";
 
 
-const StripeCheckoutForm = ({ price, email }) => {
+const StripeCheckoutForm = ({ price, email, formData }) => {
   const stripe = useStripe();
   const elements = useElements();
   const [clientSecret, setClientSecret] = useState("");
@@ -12,7 +12,7 @@ const StripeCheckoutForm = ({ price, email }) => {
   const [success, setSuccess] = useState("");  
 
   useEffect(() => {
-    fetch("http://localhost:8080/payment/stripe", {
+    fetch("https://swayedioserve.onrender.com/payment/stripe", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -58,26 +58,20 @@ const StripeCheckoutForm = ({ price, email }) => {
       payment_method: {
         card: card,
         billing_details: {
-          name: 'Halima',
-          email: email,
+          name: formData.plan_cost,
+          email: formData.email,
         },
       },
-    });
+    });   
 
     if (intentError) {
       setCardError(intentError?.message);
       setSuccess("");
     } else {
       setSuccess("Payment Succeed!");
-      
       console.log(paymentIntent)
-
       // Storing data to the database
-      const docRef = await addDoc(collection(db, "payments"), {
-        tranId: paymentIntent?.id,
-        email: paymentIntent?.receipt_email,
-        amount: paymentIntent?.amount,
-      });      
+      const docRef = await addDoc(collection(db, "payments"), formData);      
     }
   };
 

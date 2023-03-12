@@ -18,7 +18,7 @@ const PaymentInfoForm = ({ page, setPage, formData, setFormData, saveShareProjec
 
   const stripePromise = loadStripe("pk_test_51MeNjlBnUuL4pMAm5CZ3xP8IqqdGPCYCLRSip0MHwmMXVvHKLqmQsGTnaZabS2EYtQeB27TUKiqAkx1q4RFgpPXL0028NJAQiy");
 
-  console.log(formData);
+  // console.log(formData);
 
   const handlePayment = () => {
     //checkout({lineItems: [{price: "price_1MeNuFBnUuL4pMAmFYLCJiHR",quantity: 1,},],})
@@ -129,14 +129,14 @@ const PaymentInfoForm = ({ page, setPage, formData, setFormData, saveShareProjec
       {formData?.payment_method === "credit_card" && (
         <div className="w-1/2 bg-slate-300 text-center mx-auto mt-10 p-9">
           <Elements stripe={stripePromise}>
-            <StripeCheckoutForm email={formData?.email} price={formData?.plan_cost} />
+            <StripeCheckoutForm email={formData?.email} price={formData?.plan_cost} formData={formData} />
           </Elements>
         </div>
       )}
 
       {formData?.payment_method === "paypal" && (
         <div className="w-1/2 bg-slate-300 text-center mx-auto mt-10 p-9">
-          <PayPalScriptProvider options={{ "client-id": "test" }}>
+          <PayPalScriptProvider options={{ "client-id": "AaVY3Ug05X3Y2YEgjVtg6JF6EJ4Z4-vBqKQsFAvJX0qU4RVJMP7ADXpoTc7OfzUN6JrAsM8zSjwq4_Ql" }}>
 
             
             <PayPalButtons createOrder={(data, actions) => {

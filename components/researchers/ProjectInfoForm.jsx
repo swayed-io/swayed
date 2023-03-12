@@ -55,7 +55,7 @@ const ProjectInfoForm = ({ page, setPage, formData, setFormData }) => {
               htmlFor="project_description"
               className="sm:text-lg text-md font-normal text-[#413F9D]"
             >
-              Projet description <span className="text-red-600">*</span>
+              Project description <span className="text-red-600">*</span>
             </label>
 
             <div className="relative mt-1">

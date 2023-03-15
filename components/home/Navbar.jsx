@@ -11,10 +11,11 @@ const Navbar = ({ setSidebarOpen }) => {
       <nav className="bg-white p-3 lg:px-0 lg:py-1 ff-Roboto">
         <div className="max-w-[1170px] mx-auto flex items-center justify-between">
           <div className="w-full sm:w-fit">
-            <img
+            <img onClick={()=> router.push('/')}
               src="/img/logo_blue.png"
-              className="max-w-[80px] sm:max-w-[100px]"
+              className="max-w-[80px] sm:max-w-[100px] cursor-pointer"
               alt="logo"
+              
             />
           </div>
 
@@ -41,7 +42,7 @@ const Navbar = ({ setSidebarOpen }) => {
                   </a>
                 </Link>
               ) : (
-                <Link href="#get-started">
+                <Link href="/signup">
                   <a className="flex items-center px-6 sm:px-8 py-2 h-[44px] bg-gradient-to-r from-primary-100 to-secondary-100 text-white rounded-full border-0  focus:outline-none hover:bg-gray-200  text-base transition ease-in-out duration-200 bg-blue-500 hover:-translate-y-1">
                     Get Started
                   </a>

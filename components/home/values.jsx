@@ -8,14 +8,14 @@ const Values = () => {
                 <div>
                     <h3 className="lg:text-[65px] text-center md:text-[45px] sm:text-[35px] text-[27px] text-white font-bold  leading-[110%] text-shadow pt-2 ">Our core <span className="text-[#09B2E8]">values</span></h3>
                 </div>
-                <div className="text-white sm:text-xl text-sm font-normal px-4 py-8 text-justify">
+                <div className="text-white whitespace-normal  sm:text-xl text-sm font-normal px-4 py-8 ">
                     <p>
                     <span>1 . Passion for Excellence</span><br/>
                     <ul className="list-disc p-4">
                         <li>At Swayed.io, we are passionate about what we do and are always looking for ways to improve.</li>
                         <li>We are committed to continuous learning and sharing knowledge, always looking for ways to better ourselves and our product.</li>
                         <li>At Swayed.io, we are passionate about what we do and are always looking for ways to improve.</li>
-                        <li>We have a strong drive for excellence, and we work tirelessly to exceed our own and our customers`&apos; expectations.</li>
+                        <li className="" >We have a strong drive for excellence, and we work tirelessly to exceed our own and our customers`&apos; expectations.</li>
                         <li>We are not afraid to fail, we see it as a learning opportunity and as a stepping stone to achieve greatness.</li>
                     </ul>
                     </p>

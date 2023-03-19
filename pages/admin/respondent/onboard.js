@@ -17,7 +17,9 @@ function OnboardPage({ auth }) {
   const [formData, setFormData] = useState({
     created: new Date().toLocaleString(),
     userId: user?.uid,
-    fullName: "",
+    email: user?.email,
+    fullName: user?.displayName,
+    firstname: "",
     lastName: "",
     code_country: "",
     phone: "",

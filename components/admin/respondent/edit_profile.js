@@ -1,7 +1,7 @@
 import Link from "next/link";
 export default function EditProfile({ authService }) {
   const user = authService.getUser();
-  console.log(user)
+  // console.log(user)
   return (
     <div>
       <div className="bg-white p-8">

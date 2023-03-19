@@ -4,6 +4,7 @@ import { getAnalytics } from "firebase/analytics";
 import { getFirestore } from "firebase/firestore";
 import "firebase/auth";
 import "firebase/firestore";
+import { getAuth } from "firebase/auth";
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -35,6 +36,8 @@ if (!getApps.length) {
   }
 }
 export const db = getFirestore(app);
+
+export const authTwo = getAuth(app);
 
 export const createUser = async (user) => {
   if (!user) return;

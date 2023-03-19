@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import cogoToast from "cogo-toast";
+import { useSignInWithFacebook } from 'react-firebase-hooks/auth';
 
 import Link from "next/link";
 import { useRouter } from "next/router";
 
 import linkedin from 'react-linkedin-login-oauth2/assets/linkedin.png';
 import { LinkedIn } from 'react-linkedin-login-oauth2';
-export default function Signup({ signup, auth }) {
+import { authTwo } from "../firebaseConfig";
+
+export default function Signup({ signup, auth }) { 
   const [person, setPerson] = useState({
     email: "",
     password: "",
@@ -57,9 +60,7 @@ export default function Signup({ signup, auth }) {
       validate = true;
       setDisable(false);
     }
-  };
-
-  
+  };  
 
   return (
     <div className="max-w-screen-xl px-4 py-16 mx-auto sm:px-6 lg:px-8 ">
@@ -181,7 +182,7 @@ export default function Signup({ signup, auth }) {
                   fill="currentColor"
                 />
               </svg>
-              Sign in with Google{" "}
+              Sign in with Google
             </span>
           </button>
           <button
@@ -189,6 +190,7 @@ export default function Signup({ signup, auth }) {
             onClick={() => {
               signup.loginWithFacebook();
             }}
+            // onClick={()=> signInWithFacebook()}
             className=" w-full mx-auto rounded-lg items-center bg-[#3b5998] px-5 py-3 transition ease-in-out delay-150   hover:-translate-y-1 hover:scale-110 text-sm font-semibold text-white   disabled:opacity-50"
           >
             <span className="flex items-center justify-center mx-auto">
@@ -205,7 +207,7 @@ export default function Signup({ signup, auth }) {
                   fill="currentColor"
                 />
               </svg>
-              Sign in with Facebook{" "}
+              Sign in with Facebook
             </span>
           </button>
           {/* signup with linkedin */}

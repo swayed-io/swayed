@@ -29,6 +29,7 @@
         "react-anchor-link-smooth-scroll": "^1.0.12",
         "react-cookie-consent": "^8.0.1",
         "react-dom": "^18.2.0",
+        "react-firebase-hooks": "^5.1.1",
         "react-linkedin-login-oauth2": "^2.0.1",
         "react-scripts": "4.0.3",
         "sharethis-reactjs": "^1.6.0",

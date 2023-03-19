@@ -2,7 +2,7 @@ import cogoToast from "cogo-toast";
 import React from "react";
 export default function BasicForm({ page, setPage, formData, setFormData }) {
   const [validation, setValidation] = React.useState({
-    fullname: "",
+    firstname: "",
     lastname: "",
     phone: "",
   });
@@ -62,15 +62,15 @@ export default function BasicForm({ page, setPage, formData, setFormData }) {
                 type="text"
                 id="name"
                 name="name"
-                value={formData.fullName}
+                value={formData.firstname}
                 onChange={(e) =>
                   setFormData({
                     ...formData,
-                    fullName: e.target.value,
+                    firstname: e.target.value,
                   })
                 }
                 className={`w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm  ${validation.fullname}`}
-                placeholder="Enter Full Name"
+                placeholder="Enter first Name"
                 required
               />
             </div>
@@ -97,7 +97,7 @@ export default function BasicForm({ page, setPage, formData, setFormData }) {
                   })
                 }
                 className={`w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm ${validation.lastname}`}
-                placeholder="Enter Full Name"
+                placeholder="Enter last Name"
               />
             </div>
           </div>

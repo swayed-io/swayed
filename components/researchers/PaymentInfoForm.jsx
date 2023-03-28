@@ -154,7 +154,7 @@ const PaymentInfoForm = ({ page, setPage, formData, setFormData, saveShareProjec
                 onApprove={(data, actions) => {
                     return actions.order.capture().then(async (details) => {
                         const name = details.payer.name.given_name;
-                        console.log(details)
+                        // console.log(details)
                         if(details.status === 'COMPLETED'){
                           alert(`Paypal Payment completed by ${name}`);
                           const docRef = await addDoc(collection(db, "payments"), formData);
@@ -162,7 +162,6 @@ const PaymentInfoForm = ({ page, setPage, formData, setFormData, saveShareProjec
                         }                     
                     });
                 }} />
-
 
           </PayPalScriptProvider>
         </div>

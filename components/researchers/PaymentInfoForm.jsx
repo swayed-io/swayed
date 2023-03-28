@@ -2,11 +2,12 @@ import React from "react";
 import cogoToast from "cogo-toast";
 import { useRouter } from "next/router";
 import { checkout } from "../../checkout";
-import { createUser } from "../../firebaseConfig";
+import { createUser, db } from "../../firebaseConfig";
 import StripeCheckoutForm from "../paymets/StripeCheckoutForm";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
+import { addDoc, collection } from "firebase/firestore";
 const PaymentInfoForm = ({ page, setPage, formData, setFormData, saveShareProject }) => {
   const router = useRouter();
   const plan_cost = router.query.plan_cost;
@@ -136,24 +137,29 @@ const PaymentInfoForm = ({ page, setPage, formData, setFormData, saveShareProjec
 
       {formData?.payment_method === "paypal" && (
         <div className="w-1/2 bg-slate-300 text-center mx-auto mt-10 p-9">
-          <PayPalScriptProvider options={{ "client-id": "AaVY3Ug05X3Y2YEgjVtg6JF6EJ4Z4-vBqKQsFAvJX0qU4RVJMP7ADXpoTc7OfzUN6JrAsM8zSjwq4_Ql" }}>
-
+          <PayPalScriptProvider options={{ "client-id": "AahIrw2pQwLhXqQBDzoIrPZScXKQ-UpD4lRFISXVwYZqe_qiSFvlk9btgR16o69_3mx0PT3vcgB7gzVZ" }}>
             
             <PayPalButtons createOrder={(data, actions) => {
                     return actions.order.create({
                         purchase_units: [
                             {
                                 amount: {
-                                    value: "35.00",
+                                    value: formData?.plan_cost,
                                 },
                             },
                         ],
                     });
                 }}
+
                 onApprove={(data, actions) => {
-                    return actions.order.capture().then((details) => {
+                    return actions.order.capture().then(async (details) => {
                         const name = details.payer.name.given_name;
-                        alert(`Transaction completed by ${name}`);
+                        console.log(details)
+                        if(details.status === 'COMPLETED'){
+                          alert(`Paypal Payment completed by ${name}`);
+                          const docRef = await addDoc(collection(db, "payments"), formData);
+                          // router.push('/thanks')
+                        }                     
                     });
                 }} />
 

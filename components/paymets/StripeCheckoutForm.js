@@ -68,10 +68,8 @@ const StripeCheckoutForm = ({ price, email, formData }) => {
       setCardError(intentError?.message);
       setSuccess("");
     } else {
-      setSuccess("Payment Succeed!");
-      // console.log(paymentIntent)
-      // Storing data to the database
-      const docRef = await addDoc(collection(db, "payments"), formData);      
+      setSuccess("Card Payment Succeed!");           
+      const docRef = await addDoc(collection(db, "payments"), formData);
     }
   };
 

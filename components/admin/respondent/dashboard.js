@@ -65,13 +65,15 @@ export default function Dashboard({ authService }) {
         const shareProjects = data.map((v) => {
           return { type: "ShareProject", value: v }
         })
-        fetch('http://localhost:8080/scrape-offers')
+        fetch('http://34.200.252.109:8080/scrape-offers')
           .then((res) => res.json())
           .then((data) => {
             const scrappedOffers = data.map((v) => {
+              console.log(data)
               return { type: "ScrappedOffer", value: v }
             })
             setProjects([...shareProjects, ...scrappedOffers])
+            // setProjects([...scrappedOffers])
             setLoading(false)
           })
           .catch((err) => {
@@ -90,7 +92,6 @@ export default function Dashboard({ authService }) {
       setParticipant(participant);
     })();
   }, [user?.uid]);
-
 
   const handleSkip = () => {
     localStorage.setItem("skip_fo_now", true);

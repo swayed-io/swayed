@@ -11,9 +11,7 @@ import Link from "next/link";
  function PrivacyPage({ auth }) {
     const { user, loginWithGoogle, error } = auth;
   return (
-    <div>
-
-     
+    <div>     
     
       <Privacy />
       <CookieConsent>This website stores cookies on your computer. These cookies are used to collect information about how you interact with our website

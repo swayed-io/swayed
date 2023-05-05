@@ -55,7 +55,7 @@ export default function Dashboard({ authService }) {
     if (currentPage > 1) setCurrentPage(currentPage - 1);
   };
 
-  console.log(currentPage)
+  // console.log(currentPage)
 
   useEffect(() => {
     setLoading(true)
@@ -65,7 +65,9 @@ export default function Dashboard({ authService }) {
         const shareProjects = data.map((v) => {
           return { type: "ShareProject", value: v }
         })
-        fetch('http://34.200.252.109:8080/scrape-offers')
+        // http://34.200.252.109:8080/scrape-offers
+        // 
+        fetch('https://swayedioserve.onrender.com/scrape-offers')
           .then((res) => res.json())
           .then((data) => {
             const scrappedOffers = data.map((v) => {

@@ -21,13 +21,11 @@ const Earners = () => {
     <>
       <Navbar setSidebarOpen={setSidebarOpen} />
       <Sidebar setSidebarOpen={setSidebarOpen} isSidebarOpen={isSidebarOpen} />
-
       <Hero />
       <HowItWorks />
       <Testimonial />
       <CurrentProjects />
-      <Participants />
-      
+      <Participants />      
       <Footer />
     </>
   );

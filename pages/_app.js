@@ -53,19 +53,15 @@ function MyApp({ Component, pageProps }) {
               ></script>
 
               {/* <!-- Google tag (gtag.js) --> */}
-              <script
-                async
-                src="https://www.googletagmanager.com/gtag/js?id=G-XNLDENHMZX"
-              ></script>
+              <script async src="https://www.googletagmanager.com/gtag/js?id=G-XNLDENHMZX" ></script>
               <script>
                 {`window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments)}
-    gtag('js', new Date());
-  
-    gtag('config', 'G-XNLDENHMZX')`}
+                  function gtag(){dataLayer.push(arguments)}
+                  gtag('js', new Date());  
+                  gtag('config', 'G-XNLDENHMZX')`}
               </script>
 
-              <script async src="//static.getclicky.com/101383763.js"></script>
+              {/* <script async src="//static.getclicky.com/101383763.js"></script> */}
             </Head>
 
             <Component {...pageProps} />

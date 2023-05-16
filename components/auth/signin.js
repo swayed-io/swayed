@@ -44,9 +44,7 @@ export default function Signin({ login }) {
           <div className="mx-auto max-w-lg text-center ">
             <h1 className="text-2xl font-bold sm:text-3xl">Welcome back !</h1>
 
-            <p className="mt-4 text-gray-500">
-              {/* Lorem ipsum dolor sit amet consectetur adipisicing elit. Et libero
-              nulla eaque error neque ipsa culpa autem, at itaque nostrum! */}
+            <p className="mt-4 text-gray-500">             
               Still don&apos;t have an account?
               <Link href="/signup">
                 <a className="underline px-2">Signup</a>
@@ -190,7 +188,7 @@ export default function Signin({ login }) {
                 </span>
               </button>
               {/* login with linkedin */}
-              <button
+              {/* <button
                 disabled={disable}
                 onClick={() => {
                   login.loginWitLinkedin();
@@ -213,7 +211,7 @@ export default function Signin({ login }) {
                   </svg>
                   Sign in with LinkedIn{" "}
                 </span>
-              </button>
+              </button> */}
               {/* end linked in */}
             </div>
             <div className=" mx-auto max-w-lg text-center">

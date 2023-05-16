@@ -26,7 +26,7 @@ export default function Hero() {
             </button>
           </div>
         </div>
-        <div className="lg:max-w-lg lg:w-full md:w-1/2 w-full  ">
+        <div className="lg:max-w-lg lg:w-full md:w-1/2 w-full">
           <img
             src="/img/hero_small_bg.png"
             alt="hero share the future"

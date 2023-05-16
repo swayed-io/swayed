@@ -72,7 +72,7 @@ export default function Signup({ signup, auth }) {
         <div className={`mt-6 mb-0 space-y-4 rounded-lg p-8  ${form.visible}`}>
           <div className="flex flex-row space-x-8">
             <div className="w-1/2 hover:-translate-y-1 hover:scale-110">
-              <Link href="/">
+              <Link href="/researchers">
                 <button>
                   <img src="/img/business.png" />
                   <p className="text-2xl font-medium text-center ">
@@ -211,7 +211,7 @@ export default function Signup({ signup, auth }) {
             </span>
           </button>
           {/* signup with linkedin */}
-          <LinkedIn
+          {/* <LinkedIn
       clientId="861qb9wf2l994n"
       redirectUri={`${window.location.origin}/linkedin`}
       onSuccess={(code) => {
@@ -229,7 +229,7 @@ export default function Signup({ signup, auth }) {
           style={{ maxWidth: '180px', cursor: 'pointer' }}
         />
       )}
-    </LinkedIn>
+          </LinkedIn> */}
           {/* <button
             disabled={disable}
             onClick={() => {
@@ -255,6 +255,12 @@ export default function Signup({ signup, auth }) {
             </span>
           </button> */}
           {/* end linked in */}
+
+          <p className="mt-4 text-gray-500">Already have an account? <Link href="/signin">
+                <a className="underline px-2">Sign In</a>
+              </Link> </p>
+
+
           <p className="text-sm text-center sm:text-medium">
             By Clicking &apos;Sign Up&apos; I agree to the User interviews{" "}
             <Link href="/terms">

@@ -47,7 +47,7 @@ const Sidebar = ({ isSidebarOpen, setSidebarOpen }) => {
             </a>
           </Link>
         ) : (
-          <Link href="/get-started">
+          <Link href="/signup">
             <a className="flex items-center justify-center  mt-8 px-6 sm:px-8 py-2 h-[44px] bg-gradient-to-r from-primary-100 to-secondary-100 text-white rounded-full border-0  focus:outline-none hover:bg-gray-200  text-base transition ease-in-out duration-200 bg-blue-500 hover:-translate-y-1">
               Get Started
             </a>

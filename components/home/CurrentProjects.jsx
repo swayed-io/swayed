@@ -2,8 +2,10 @@ import React from "react";
 import ProjectDetails from "./common/ProjectDetails";
 import ProjectThree from "./common/ProjectThree";
 import ProjectTwo from "./common/ProjectTwo";
+import { useRouter } from "next/router";
 
 const CurrentProjects = () => {
+  const router = useRouter();
   return (
     <>
       <div className="lg:bg-[#edf6fd] py-10">
@@ -29,7 +31,7 @@ const CurrentProjects = () => {
               <ProjectThree />
             </div>{" "}
             <div className="md:py-8 sm:py-6 py-3 text-center md:mb-12 mb-4">
-              <button
+              <button onClick={()=> router.push('/signup')}
                 className="  md:text-[22px] sm:text-[18px] text-[14px] font-bold ff-Roboto sm:py-2 py-[6px] sm:px-10 md:px-8 px-6 rounded-[100px] text-white 
              btn-bg-gradients transition-all duration-300  hover:-translate-y-1   "
               >

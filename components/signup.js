@@ -1,14 +1,7 @@
 import React, { useState } from "react";
 import cogoToast from "cogo-toast";
-import { useSignInWithFacebook } from 'react-firebase-hooks/auth';
 
 import Link from "next/link";
-import { useRouter } from "next/router";
-
-import linkedin from 'react-linkedin-login-oauth2/assets/linkedin.png';
-import { LinkedIn } from 'react-linkedin-login-oauth2';
-import { authTwo } from "../firebaseConfig";
-
 export default function Signup({ signup, auth }) { 
   const [person, setPerson] = useState({
     email: "",

@@ -18,7 +18,7 @@ const Hero = () => {
                 already use.
               </h4>
 
-              <button onClick={()=> router.push('/#get-started')} className="bg-[#4ABEFF] text-white lg:px-10 md:px-8  px-3   md:py-2 py-[2px] lg:text-[22px] md:text-[18px] sm:text-[16px] text-[13px] font-bold text-shadow rounded-full transition-all ease-in-out duration-300 hover:-translate-y-1   ">
+              <button onClick={()=> router.push('/signup')} className="bg-[#4ABEFF] text-white lg:px-10 md:px-8  px-3   md:py-2 py-[2px] lg:text-[22px] md:text-[18px] sm:text-[16px] text-[13px] font-bold text-shadow rounded-full transition-all ease-in-out duration-300 hover:-translate-y-1   ">
                 Get Started Now
               </button>
             </div>

@@ -6,19 +6,20 @@ export default function BasicForm({ page, setPage, formData, setFormData }) {
     lastname: "",
     phone: "",
   });
-  const [filterinterest, setFilterInterest] = React.useState(
-    formData.interests
-  );
 
-  const removeItemOnce = (arr, value) => {
+  /* const [filterinterest, setFilterInterest] = React.useState(
+    formData.interests
+  ); */
+
+  /* const removeItemOnce = (arr, value) => {
     var index = arr.indexOf(value);
     if (index > -1) {
       arr.splice(index, 1);
     }
     return arr;
-  };
+  }; */
 
-  const filterData = (event) => {
+  /* const filterData = (event) => {
     let value = event.target.value;
 
     if (!filterinterest.includes(value)) {
@@ -32,7 +33,7 @@ export default function BasicForm({ page, setPage, formData, setFormData }) {
       event.target.className =
         "rounded-full  border-2 shadow-md border-gray-200 p-2 hover:animate-bounce bg-white text-black";
     }
-  };
+  }; */
 
   return (
     <div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8 ">
@@ -784,7 +785,8 @@ export default function BasicForm({ page, setPage, formData, setFormData }) {
               />
             </div>
           </div>
-          <div>
+
+          {/* <div>
             <label
               htmlFor="name"
               className="sm:text-lg text-md font-normal text-[#413F9D]"
@@ -963,6 +965,7 @@ export default function BasicForm({ page, setPage, formData, setFormData }) {
               </button>
             </div>
           </div>
+          */}
 
           <button
             className="block w-full rounded-lg bg-secondary-100 px-5 py-3 transition ease-in-out delay-150 active:bg-green-500  hover:-translate-y-1 hover:scale-110 text-sm font-semibold text-white   disabled:opacity-50"
@@ -1002,13 +1005,14 @@ export default function BasicForm({ page, setPage, formData, setFormData }) {
                     "disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none invalid:border-pink-500 invalid:text-pink-600 focus:invalid:border-pink-500 focus:invalid:ring-pink-500",
                 });
               }
-              if (filterinterest.length === 0) {
+              /* if (filterinterest.length === 0) {
                 message = "Select at least one interest";
                 validate = false;
-              }
+              } */
 
               if (validate) {
-                setFormData({ ...formData, interests: filterinterest });
+                // setFormData({ ...formData, interests: filterinterest });
+                setFormData({ ...formData });
                 setPage(page + 1);
               } else {
                 cogoToast.warn(message);
